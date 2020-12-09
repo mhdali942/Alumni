@@ -56,9 +56,9 @@
 
                              @if(Auth::check() && Auth::user()->role == "admin")
 
-                                <th><a href="{{route('alumniForm.show',$value->id)}}"><button class="btn btn-success">Detalis</button></a></th>
-                                <th><a href="{{route('alumniForm.edit',$value->id)}}"><button class="btn btn-primary">Edit</button></a></th>
-                                 <th><form method="post" action="{{route('alumniForm.destroy', $value->id)}}" enctype="multipart/form-data">
+                                <th><a href="{{route('lastyear.show',$value->id)}}"><button class="btn btn-success">Detalis</button></a></th>
+                                <th><a href="{{route('lastyear.edit',$value->id)}}"><button class="btn btn-primary">Edit</button></a></th>
+                                 <th><form method="post" action="{{route('lastyear.destroy', $value->id)}}" enctype="multipart/form-data">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Delete</button>

@@ -60,7 +60,8 @@
 
 										    <div class="form-group col-md-6">
 										      <label for="refrenceNumber">Refrence NO. / الرقم المرجعي</label>
-										      <input type="text" class="form-control" id="refrenceNumber" name="refrenceNumber" placeholder="Refrence Number" value="{{$alumnis->refrenceNumber}}">
+										      <input type="text" class="form-control" id="refrenceNumber" name="refrenceNumber" 
+										      placeholder="Refrence Number"  value="{{$alumnis->refrenceNumber}}">
 										    </div>
 
 									</div>
@@ -248,7 +249,7 @@
 										      placeholder="Additional Task" value="{{$alumnis->additionaltask}}">
 										    </div>
 
-													<div class="container">
+													<div class="container" id="alumni_memberships">
 												<div class="section-title">
 												          <h2>Alumni Memebership Types</h2>
 												       
@@ -272,14 +273,14 @@
 									                        <small class="text-muted">Minimum 10 MYR / تبدأ من 10 رنجت ماليزي </small>
 
 									            <h3 class="card-title pricing-card-title">Maximum 499  MYR <br>كحد  أقصى  499 رنجت ماليزي </h3><br>
-									              
+									              	 <strong>Amount / المبلغ   </strong><input type="input"  disabled="true" class="form-control" id="silverMemAmount" name="silverMemAmount" ><br>
 									            
-									           		<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#silverModel" >Read More</button><br><br>
+									           		<button type="button" class="btn btn-primary" disabled="true"  data-toggle="modal" data-target="#silverModel" >Read More</button><br><br>
 
 									           		<hr/>
 
 										           <div class="form-check form-check-inline">
-												  <input class="form-check-input" type="radio" name="Membershiptype"  value="Silver" 
+												  <input class="form-check-input" type="radio" disabled="true" name="Membershiptype"  value="Silver" 
 												  {{ ($alumnis->Membershiptype =="Silver") ? "checked" : "" }}>
 												  <label class="form-check-label" for="inlineRadio1">Select</label>
 												</div>
@@ -299,13 +300,14 @@
 									            <small class="text-muted">Minimum 500 MYR / تبدأ من 500 رنجت ماليزي  </small>
 									            <h3 class="card-title pricing-card-title">Maximum 999  MYR <br>كحد  أقصى  900 رنجت ماليزي  </h3><br>
 
-													<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#goldenModel" >Read More</button><br><br>
+									            	 <strong>Amount / المبلغ   </strong><input type="input"  class="form-control" id="goldenMemAmount" name="goldenMemAmount"  disabled="true"><br>
+													<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#goldenModel" disabled="true" >Read More</button><br><br>
 
 									           		<hr/>
 
 
 									           		<div class="form-check form-check-inline">
-												  <input class="form-check-input" type="radio" name="Membershiptype"  value="Golden"
+												  <input class="form-check-input" type="radio" disabled="true" name="Membershiptype"  value="Golden"
 												  {{ ($alumnis->Membershiptype =="Golden") ? "checked" : "" }}>
 												  <label class="form-check-label" for="inlineRadio1">Select</label>
 													</div>
@@ -326,16 +328,17 @@
 										          <div class="card-body">
 										        	 <small class="text-muted">Minimum 1000 MYR / تبدأ من 1000 رنجت ماليزي  </small>
 										          	  <h3 class="card-title pricing-card-title"> 1000 MYR <small class="text-muted"></small></h3><br><br><br><br>
+										          	   <strong>Amount / المبلغ   </strong><input type="input"  class="form-control" id="PlatinumMemAmount" name="PlatinumMemAmount" disabled="true"><br>
 										             	
 										             	<button type="button" class="btn btn-primary"  
-													data-toggle="modal" data-target="#PlatinumModal" >Read More</button><br><br>
+													data-toggle="modal" data-target="#PlatinumModal" disabled="true">Read More</button><br><br>
 
 									           		<hr/>
 
 										        		
 												           <div class="form-check form-check-inline">
-														  <input class="form-check-input" type="radio" name="Membershiptype"  value="Platinum">
-														  	 {{ ($alumnis->Membershiptype =="Platinum") ? "checked" : "" }}>
+														  <input class="form-check-input" type="radio" name="Membershiptype"  value="Platinum"	disabled="true">
+														  	 {{ ($alumnis->Membershiptype =="Platinum") ? "checked" : "" }}
 
 														  <label class="form-check-label" for="inlineRadio1"> Select</label>
 														</div>
@@ -353,7 +356,7 @@
 											
 											<div class="form-group">
 											 <div class="form-check">
-												  <input class="form-check-input" type="checkbox" name="termsCondtions" value="yes" data-toggle="modal" data-target="#termsCondtionsModel"  value="{{ old('termsCondtions') }}" ><br>
+												  <input class="form-check-input" type="checkbox" name="termsCondtions" value="yes" data-toggle="modal" data-target="#termsCondtionsModel"   {{ ($alumnis->termsCondtions =="yes") ? "checked" : "" }}><br>
 												   <label class="form-check-label" for="gridCheck">
 												   	Please read the terms and regulations of the Alumni Club /يرجى قراءة اللائحة الأساسية لنادي الخريجين
 												      
@@ -694,10 +697,7 @@ This cultural, social and developmental non-profit club will be so that it invol
 			          required: true,
 			          
 			        },
-			         Membershiptype: {
-			          required: true,
-			          
-			        },
+			        
 			        termsCondtions: {
 			          required: true,
 			          
@@ -788,6 +788,26 @@ This cultural, social and developmental non-profit club will be so that it invol
 			          maxlength:20
 			          
 			        },
+			        silverMemAmount:{
+
+			        	
+      					max: 499,
+      					min:10
+			        },
+
+			       GoldenMemAmount:{
+
+			        	
+      					max: 500,
+      					min:999
+			        },
+
+			        PlatinumMemAmount:{
+
+			        	
+      					max:9999999,
+      					min:1000
+			        }
 
 			      },
 			      errorElement: "span",
@@ -795,5 +815,12 @@ This cultural, social and developmental non-profit club will be so that it invol
 			    });
 
 		  });
+
+             $(function() {
+				    $('#alumni_memberships').hide(); 
+				     	
+
+				    
+				});
 
             </script>

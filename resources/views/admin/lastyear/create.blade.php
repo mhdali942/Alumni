@@ -242,16 +242,38 @@
 
 										  </div>
 
-										 <div class="form-group">
+										
+
+										  	<div class="form-row">
+
+										     <div class="form-group col-md-6">
 										      <label for="additionaltask">Other additional task you can do  </label>
 										      <input type="text" class="form-control" id="additionaltask" name="additionaltask" 
 										      placeholder="Additional Task"  value="{{ old('additionaltask') }}"		>
 										    </div>
 
+
+										    
+										    <div class="form-group col-md-6">
+										    <label for="Memebership">Memberships   </label>
+										   	<select class="form-control" id="Memberships" name="Memberships"  value="{{ old('Memberships') }}">
+							                          <option value="">Select</option>
+							                          <option id="bronze" value="bronze">Bronze Membership</option>
+							                          
+							                             	
+							                             
+
+							                </select>
+										    
+										    </div>
+
+										  </div>
+
+
 												 
- 
-																		
-									<div class="form-row mb-3 text-center">
+	 				
+	 							
+	 								<div class="form-row mb-3 text-center" id="lastyear_memberships">
 
 											<div class="form-group col-md-4">
 													
@@ -268,9 +290,10 @@
 												            <h4 class="my-0 font-weight-normal" >Bronze /البرونزية </h4>
 												          </div>
 												          <div class="card-body">
-												            <small class="text-muted">Start From 10 MYR / تبدأ من 10 رنحت  </small>
-												            <h3 class="card-title pricing-card-title">Minimum 10 MYR / كحد أدنى 10 رنجت ماليزي </h3>
-
+												            <small class="text-muted">Start From 10 MYR / تبدأ من 10 رنحت  </small>		
+												            <h3 class="card-title pricing-card-title">Minimum 10 MYR <br> كحد أدنى 10 رنجت ماليزي </h3>
+												            <h3 class="card-title pricing-card-title">Can contribute with more than that<br> يمكن أن تساهم بأكثر من ذلك </h3><br>
+												             <strong>Amount / المبلغ   </strong><input type="input"  class="form-control" id="bronzeMemAmount" name="bronzeMemAmount" ><br>
 												          
 												          	<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#bronzeModal" >Read More</button><br><br>
 
@@ -292,6 +315,9 @@
 											</div>
 
 									</div>	
+	 					
+																		
+									
 
 						<div class="row">
 							
@@ -614,6 +640,12 @@ This cultural, social and developmental non-profit club will be so that it invol
 			          maxlength:25
 			          
 			        },
+			        	bronzeMemAmount:{
+
+			        	
+      					max:9999999,
+      					min:10
+			        }
 
 			      },
 			      errorElement: "span",
@@ -622,5 +654,22 @@ This cultural, social and developmental non-profit club will be so that it invol
 
 
 		  });
+
+            $(function() {
+				    $('#lastyear_memberships').hide(); 
+				     
+					    $('#Memberships').change(function(){
+				        if($('#Memberships').val() == 'bronze') {
+				           $('#lastyear_memberships').show(); 
+				         
+
+				        } else if($('#Memberships').val() == '') {
+				            	
+				           $('#lastyear_memberships').hide(); 
+				         
+				       
+					        } 
+					    });
+				});
 
             </script>

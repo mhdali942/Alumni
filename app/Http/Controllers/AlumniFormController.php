@@ -34,16 +34,25 @@ class  AlumniFormController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        if ((Auth::check() && Auth::user()->statues == "alumni")){
+    public function create(User $user, alumni $alumnis)
+    
+      {
+
+        if (Auth::user()->alumnis()->count() >= 1) {
+
+           session()->flash('errors', 'You cant submit more than a form');
+                return redirect('/admin');
+            }
+
+
+            if ((Auth::check() && Auth::user()->statues == "alumni")){
           return view('admin/alumniForms/create');
 
       }elseif((Auth::check() && Auth::user()->statues == "general")) {
           
             return view('admin/alumniForms/create');
       }else{
-
+           session()->flash('errors', 'you are not authorized to access  this form');
          return redirect('/admin');
       }
     }
@@ -57,6 +66,16 @@ class  AlumniFormController extends Controller
      */
     public function store( User $user, Request $request)
     {
+
+
+        $alumnis = alumni::where('email', $request->email)->get();
+
+    # check if email is more than 1
+    if(sizeof($alumnis) > 0){
+       
+         session()->flash('errors', 'e-mail already exists');
+        return back();
+    }
 
         $alumnis = alumni::where('email', $request->email)->get();
 
@@ -122,7 +141,8 @@ class  AlumniFormController extends Controller
     public function show(alumni $alumnis)
     {
     
-     
+         $alumnis = auth()->user()->alumnis()->latest()->paginate(10);
+
 
          // $this->authorize('view', $alumnis);
 
@@ -139,7 +159,7 @@ class  AlumniFormController extends Controller
     public function edit(alumni $alumnis)
     {
             
-       $this->authorize('view', $alumnis);
+       // $this->authorize('view', $alumnis);
 
         return view('admin/alumniForms/edit',['alumnis'=>  $alumnis]);
     }
@@ -187,7 +207,7 @@ class  AlumniFormController extends Controller
             'SkillsAbilities'=>'',
             'additionaltask'=>'',
 
-            'Membershiptype'=>'required',
+            
             'termsCondtions'=>'required',
     ]);
 
@@ -217,7 +237,7 @@ class  AlumniFormController extends Controller
            $alumnis->Otherachievements = $inputs['Otherachievements'];
            $alumnis->SkillsAbilities = $inputs['SkillsAbilities'];
            $alumnis->additionaltask = $inputs['additionaltask'];
-           $alumnis->Membershiptype = $inputs['Membershiptype'];
+         
            $alumnis->termsCondtions =$inputs['termsCondtions'];
             
           

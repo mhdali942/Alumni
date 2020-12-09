@@ -93,7 +93,7 @@
 										 
 
 										<div class="form-group col-md-6">
-										       <label for="Currentwork">Current 	Work / العمل الحالي </label>
+										       <label for="Currentwork">Current Work / العمل الحالي </label>
 										   		 <input type="text" class="form-control" id="Currentwork" name="Currentwork" placeholder="Current Work"  value="{{ old('Currentwork') }}">
 										    
 										    </div>
@@ -242,14 +242,47 @@
 
 										  </div>
 
-										 <div class="form-group">
-										     <label for="additionaltask">Other additional task you can do  </label>
+										  <div class="form-row">
+
+										    <div class="form-group col-md-6">
+										      <label for="additionaltask">Other additional task you can do  </label>
 										      <input type="text" class="form-control" id="additionaltask" name="additionaltask" 
 										      placeholder="Additional Task"  value="{{ old('additionaltask') }}"		>
 										    </div>
 
+
+										    <div class="form-group col-md-6">
+										    <label for="Memebership">Memberships   </label>
+										   	<select class="form-control" id="Memberships" name="Memberships"  value="{{ old('Memberships') }}">
+							                          <option value="">Select</option>
+							                          <option id="Honorary" value="Honorary">Honorary Membership</option>
+							                          <option  id="Cooperative" value="Cooperative">Cooperative Membership</option>
+							                             	
+							                             
+
+							                </select>
+										    
+										    </div>
+
+
+										    </div>
+
+
+										  </div>
+
+
+
+										 <div class="form-group">
+										    
+
 											<div class="container">
-												<div class="section-title">
+							  
+ 
+									<div class="form-row mb-3 text-center">
+
+								<div class="form-group col-md-12" >
+
+									<!-- <div class="section-title">
 												          <h2>Alumni Memebership Types</h2>
 												       
 												        </div>   
@@ -258,12 +291,9 @@
 									         <div class="alert alert-success" role="alert">
 											 Note: Pay for the first month's subscription / تسديد قيمة اشتراك الشهر الأول  
 											</div>       
+ -->
 
- 
-									<div class="form-row mb-3 text-center">
-
-								<div class="form-group col-md-12">
-										 <div class="card mb-4 box-shadow">
+										 <div class="card mb-4 box-shadow" id="Cooperative_row">
 									          <div class="card-header">
 									            <h4 class="my-0 font-weight-normal">Cooperative Membership / العضوية التعاونية </h4>
 
@@ -272,12 +302,12 @@
 									           
 									           <small class="text-muted"></small>
 									            <h3 class="card-title pricing-card-title">Minimum 50 MYR / تبدأ من  50 رنجت ماليزي   </h3><br>
-									            <h3 class="card-title pricing-card-title">Can contribute with more than that </h3><br>
-
+									            <h3 class="card-title pricing-card-title">Can contribute with more than that<br>مكن أن تساهم بأكثر من ذلك  </h3><br>
+									            	  <strong>Amount / المبلغ   </strong><input type="input"  class="form-control" id="CooperativeMemAmount" name="CooperativeMemAmount"><br>
 									             <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#CooperativeModal" >Read More</button><br><br>
 
 									           		<hr/>
-									            
+									            	
 									         
 
 										           <div class="form-check form-check-inline">
@@ -299,7 +329,8 @@
 
 									
 									<div class="form-group col-md-12">
-										 <div class="card mb-4 box-shadow">
+										 <div class="card mb-4 box-shadow" id="Honorary_row">
+
 									          <div class="card-header" style="background-color: #c3b253;">
 									            <h4 class="my-0 font-weight-normal" style="color: white;" > Honorary Membership / العضوية الشرفية الفخرية  </h4>
 									          </div>
@@ -307,6 +338,7 @@
 									          	<h3 class="card-title pricing-card-title">Minimum 500 MYR / تبدأ من 500 رنجت ماليزي   </h3><br>
 									            <h3 class="card-title pricing-card-title">Maximum 999  MYR <br>كحد  أقصى  999رنجت ماليزي  </h3><br>
 
+												             <strong>Amount / المبلغ   </strong><input type="input"  class="form-control" id="HonoraryMemAmount" name="HonoraryMemAmount" ><br>
 									         
 
 									             <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#HonoraryModal" >Read More</button><br><br>
@@ -691,11 +723,41 @@
 			          
 			        },
 
+			        HonoraryMemAmount:{
+
+			        	
+      					max:999,
+      					min:500
+			        },
+
+			         CooperativeMemAmount:{
+
+			        	
+      					max:9999999,
+      					min:50
+			        }
 			      },
 			      errorElement: "span",
 			      errorClass: "help-inline-error",
 			    });
 
 		  });
+
+            	$(function() {
+				    $('#Cooperative_row').hide(); 
+				      $('#Honorary_row').hide(); 
+				    $('#Memberships').change(function(){
+				        if($('#Memberships').val() == 'Honorary') {
+				            $('#Honorary_row').show();
+				            $('#Cooperative_row').hide();
+				             
+				        } else if($('#Memberships').val() == 'Cooperative') {
+				            	$('#Cooperative_row').show();
+				            	$('#Honorary_row').hide();
+				             
+
+					        } 
+					    });
+				});
 
             </script>

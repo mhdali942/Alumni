@@ -239,13 +239,38 @@
 
 										  </div>
 
-										 <div class="form-group">
+										  
+
+										  <div class="form-row">
+
+										    <div class="form-group col-md-6">
 										      <label for="additionaltask">Other additional task you can do  </label>
 										      <input type="text" class="form-control" id="additionaltask" name="additionaltask" 
 										      placeholder="Additional Task"  value="{{ old('additionaltask') }}"		>
 										    </div>
 
-													<div class="container">
+
+										    <div class="form-group col-md-6">
+										    <label for="Memebership">Memberships   </label>
+										   	<select class="form-control" id="Memberships" name="Memberships"  value="{{ old('Memberships') }}">
+							                          <option value="">Select</option>
+							                          <option id="silver" value="silver">Silver Membership</option>
+							                           <option id="golden" value="golden">Golden Membership</option>
+							                          <option  id="platinum" value="platinum">Platinum Membership</option>
+							                             	
+							                             
+
+							                </select>
+										    
+										    </div>
+
+
+										    </div>
+
+
+									
+
+													<div class="container" id="alumni_memberships">
 												<div class="section-title">
 												          <h2>Alumni Memebership Types</h2>
 												       
@@ -269,14 +294,14 @@
 									                        <small class="text-muted">Minimum 10 MYR / تبدأ من 10 رنجت ماليزي </small>
 
 									            <h3 class="card-title pricing-card-title">Maximum 499  MYR <br>كحد  أقصى  499 رنجت ماليزي </h3><br>
-									              
-									            
-									           		<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#silverModel" >Read More</button><br><br>
+									             <strong>Amount / المبلغ   </strong><input type="input" id="amountsilver" class="form-control" id="silverMemAmount" name="silverMemAmount" ><br>
+									            	
+									           		<button type="button" class="btn btn-primary" id="btnsilver"  data-toggle="modal" data-target="#silverModel" >Read More</button><br><br>
 
 									           		<hr/>
 									           		
 										           <div class="form-check form-check-inline">
-												  <input class="form-check-input" type="radio" name="Membershiptype"  value="Silver"  value="{{ old('Membershiptype') }}">
+												  <input class="form-check-input" type="radio" id="inpsilver" name="Membershiptype"  value="Silver"  value="{{ old('Membershiptype') }}">
 												  <label class="form-check-label" for="inlineRadio1">Select</label>
 												</div>
 
@@ -293,13 +318,16 @@
 									            <small class="text-muted">Minimum 500 MYR / تبدأ من 500 رنجت ماليزي  </small>
 									            <h3 class="card-title pricing-card-title">Maximum 999  MYR <br>كحد  أقصى  999 رنجت ماليزي  </h3><br>
 
-													<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#goldenModel" >Read More</button><br><br>
+
+									            	
+									             <strong>Amount / المبلغ   </strong><input type="input" id="amountgolden"  class="form-control" id="goldenMemAmount" name="goldenMemAmount" ><br>
+													<button type="button" class="btn btn-primary" id="btngolden" data-toggle="modal" data-target="#goldenModel" >Read More</button><br><br>
 
 									           		<hr/>
 									           
 
 									           		<div class="form-check form-check-inline">
-												  <input class="form-check-input" type="radio" name="Membershiptype"  value="Golden"  value="{{ old('Membershiptype') }}"> 
+												  <input class="form-check-input" type="radio" id="inpgolden" name="Membershiptype"  value="Golden"  value="{{ old('Membershiptype') }}"> 
 												  <label class="form-check-label" for="inlineRadio1">Select</label>
 													</div>
 									          </div>
@@ -316,17 +344,19 @@
 									          	</div>
 
 										          <div class="card-body">
-										        	 <small class="text-muted">Minimum 1000 MYR / تبدأ من 1000 رنجت ماليزي  </small>
-										        	    <h3 class="card-title pricing-card-title">Can contribute with more than that </h3><br><br>
-										             	
-										             	<button type="button" class="btn btn-primary"  
+										        	 <small class="text-muted">Minimum 1000 MYR<br> تبدأ من 1000 رنجت ماليزي  </small>
+										        	    <h3 class="card-title pricing-card-title">Can contribute with more than that يمكن أن تساهم بأكثر من ذلك </h3>
+										             		
+									             <strong>Amount / المبلغ   </strong><input type="input" id="amountplat"  class="form-control" id="PlatinumMemAmount" name="PlatinumMemAmount" ><br>
+
+										          <button type="button" class="btn btn-primary" id="btnplat" 
 													data-toggle="modal" data-target="#PlatinumModal" >Read More</button><br><br>
 
 									           		<hr/>
 
 									           		
 												           <div class="form-check form-check-inline">
-														  <input class="form-check-input" type="radio" name="Membershiptype"  value="Platinum"  value="{{ old('Membershiptype') }}">
+														  <input class="form-check-input" type="radio" id="inpplat" name="Membershiptype"  value="Platinum"  value="{{ old('Membershiptype') }}">
 														  <label class="form-check-label" for="inlineRadio1">Select</label>
 														</div>
 										        	 </div>
@@ -779,6 +809,28 @@ This cultural, social and developmental non-profit club will be so that it invol
 			          
 			        },
 
+			        silverMemAmount:{
+
+			        	
+      					max: 499,
+      					min:10
+			        },
+
+			       GoldenMemAmount:{
+
+			        	
+      					max: 500,
+      					min:999
+			        },
+
+			        PlatinumMemAmount:{
+
+			        	
+      					max:9999999,
+      					min:1000
+			        }
+
+
 			      },
 			      errorElement: "span",
 			      errorClass: "help-inline-error",
@@ -786,4 +838,59 @@ This cultural, social and developmental non-profit club will be so that it invol
 
 		  });
 
+
+            	$(function() {
+				    $('#alumni_memberships').hide(); 
+				     
+				    $('#Memberships').change(function(){
+				        if($('#Memberships').val() == 'silver') {
+				           $('#alumni_memberships').show(); 
+				          $('#inpsilver').prop( "disabled", false );
+				          $('#btnsilver').prop( "disabled",false  );
+							
+							$('#inpgolden').prop( "disabled", true );
+							$('#btngolden').prop( "disabled", true );
+
+				          $('#inpplat').prop( "disabled", true );
+				          $('#btnplat').prop( "disabled", true );
+
+				          $('#amountplat').prop( "disabled", true );
+				          $('#amountgolden').prop( "disabled", true );
+				            $('#amountsilver').prop( "disabled", false );
+				       
+
+				        } else if($('#Memberships').val() == 'golden') {
+				            	
+				           $('#alumni_memberships').show(); 
+				          $('#inpsilver').prop( "disabled", true );
+				          $('#btnsilver').prop( "disabled", true );
+
+				           $('#inpgolden').prop( "disabled",false );
+				          $('#btngolden').prop( "disabled", false );
+
+				          $('#inpplat').prop( "disabled", true );
+				          $('#btnplat').prop( "disabled", true );
+				          $('#amountplat').prop( "disabled", true );
+				          $('#amountsilver').prop( "disabled", true );
+				          $('#amountgolden').prop( "disabled", false );
+				       
+
+					        }else{
+
+					        	$('#alumni_memberships').show(); 
+				          $('#inpsilver').prop( "disabled", true );
+				          $('#btnsilver').prop( "disabled", true );
+
+				          $('#inpplat').prop( "disabled", false );
+				          $('#btnplat').prop( "disabled", false );
+
+				          $('#inpgolden').prop( "disabled", true );
+				          $('#btngolden').prop( "disabled", true );
+				          $('#amountgolden').prop( "disabled", true );
+				          $('#amountsilver').prop( "disabled", true );
+				          $('#amountplat').prop( "disabled", false );
+				       
+					        } 
+					    });
+				});
             </script>

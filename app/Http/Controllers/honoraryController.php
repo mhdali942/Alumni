@@ -15,15 +15,22 @@ class honoraryController extends Controller
   public function index()
     {
        	
-    $honorary = auth()->user()->honorary()->latest()->paginate(10);
+    $honoraries = auth()->user()->honorary()->latest()->paginate(10);
 
-    return view('admin/honoraryForm/index',['honorary'=> $honorary]);
+    return view('admin/honoraryForm/index',['honoraries'=> $honoraries]);
 
     }
 
 
-       public function create()
-    {
+       public function create(User $User, honorary $honoraries)
+    {   
+
+        if (Auth::user()->honorary()->count() >= 1) {
+
+           session()->flash('errors', 'You cant submit more than a form');
+                return redirect('/admin');
+            }
+
 
         if ((Auth::check() && Auth::user()->statues == "cooperative")){
                 return view('admin/honoraryForm/create');    
@@ -31,7 +38,7 @@ class honoraryController extends Controller
           
               return view('admin/honoraryForm/create');
       }else{
-
+           session()->flash('errors', 'you are not authorized to access  this form');
          return redirect('/admin');
       }
 
@@ -171,7 +178,7 @@ class honoraryController extends Controller
             'SkillsAbilities'=>'',
             'additionaltask'=>'',
 
-            'Membershiptype'=>'required',
+            // 'Membershiptype'=>'required',
             'Regulations'=>'required',
     ]);
 
@@ -201,7 +208,7 @@ class honoraryController extends Controller
             $honoraries->Otherachievements = $inputs['Otherachievements'];
             $honoraries->SkillsAbilities = $inputs['SkillsAbilities'];
             $honoraries->additionaltask =$inputs['additionaltask'];
-            $honoraries->Membershiptype = $inputs['Membershiptype'];
+            // $honoraries->Membershiptype = $inputs['Membershiptype'];
             $honoraries->Regulations = $inputs['Regulations'];
             
           

@@ -30,17 +30,28 @@ class lastYearController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create( User $user,lastyear $lastyears)
     {
 
 
+
+      if (Auth::user()->lastyears()->count() >= 1) {
+
+           session()->flash('errors', 'You cant submit more than a form');
+                return redirect('/admin');
+            }
+
+
           if ((Auth::check() && Auth::user()->statues == "lastyear")){
+
+
                 return view('admin/lastyear/create');    
       }elseif((Auth::check() && Auth::user()->statues == "general")) {
           
               return view('admin/lastyear/create');
       }else{
 
+          session()->flash('errors', 'you are not authorized to access  this form');
          return redirect('/admin');
       }
 
@@ -151,7 +162,8 @@ class lastYearController extends Controller
     public function update(lastyear $lastyears)
     {
 
-           $this->authorize('update', $lastyears);
+           // $this->authorize('update', $lastyears);
+        
         $inputs = request()->validate([
             
             'fullname'=>'required',
@@ -181,7 +193,7 @@ class lastYearController extends Controller
             'SkillsAbilities'=>'',
             'additionaltask'=>'',
 
-            'Membershiptype'=>'required',
+            
             'termsCondtions'=>'required',
     ]);
 
@@ -211,11 +223,11 @@ class lastYearController extends Controller
            $lastyears->Otherachievements = $inputs['Otherachievements'];
            $lastyears->SkillsAbilities = $inputs['SkillsAbilities'];
            $lastyears->additionaltask =$inputs['additionaltask'];
-           $lastyears->Membershiptype = $inputs['Membershiptype'];
+           // $lastyears->Membershiptype = $inputs['Membershiptype'];
            $lastyears->termsCondtions = $inputs['termsCondtions'];
          
 
-            auth()->user()->alumnis()->save($lastyears);
+            auth()->user()->lastyears()->save($lastyears);
 
              session()->flash('toast_info', 'Form has been Updated Successfully');
 

@@ -243,7 +243,7 @@
 										    </div>
 
 													
-									<div class="form-row mb-3 text-center">
+									<div class="form-row mb-3 text-center" id="lastyear_memberships">
 
 											<div class="form-group col-md-4">
 													
@@ -261,17 +261,18 @@
 												          </div>
 												          <div class="card-body">
 												            <small class="text-muted">Start From 10 MYR / تبدأ من 10 رنحت  </small>
-												            <h3 class="card-title pricing-card-title">Minimum 10 MYR / كحد أدنى 10 رنجت ماليزي </h3>
-
-												            	
+												             <h3 class="card-title pricing-card-title">Minimum 10 MYR <br> كحد أدنى 10 رنجت ماليزي </h3>
+												            <h3 class="card-title pricing-card-title">Can contribute with more than that<br> يمكن أن تساهم بأكثر من ذلك </h3><br>
+												             <strong>Amount / المبلغ   </strong><input type="input"  class="form-control" id="bronzeMemAmount" name="bronzeMemAmount" ><br>
+												             
 												            		<button type="button" class="btn btn-primary"  
-													data-toggle="modal" data-target="#bronzeModal" >Read More</button><br><br>
+													data-toggle="modal" data-target="#bronzeModal" disabled="true" >Read More</button><br><br>
 
 									           		<hr/>
 
 
 												           		<div class="form-check form-check-inline">
-															  <input class="form-check-input" type="radio" name="Membershiptype"  value="Bronze"
+															  <input class="form-check-input" type="radio" name="Membershiptype"  disabled="true" value="Bronze"
 															   {{ ($lastyears->Membershiptype =="Bronze") ? "checked" : "" }}>
 															  <label class="form-check-label" for="inlineRadio1">Select</label>
 																</div>
@@ -606,6 +607,12 @@ This cultural, social and developmental non-profit club will be so that it invol
 			          maxlength:20
 			          
 			        },
+			        bronzeMemAmount:{
+
+			        	
+      					max:9999999,
+      					min:10
+			        }
 
 			      },
 			      errorElement: "span",
@@ -613,6 +620,13 @@ This cultural, social and developmental non-profit club will be so that it invol
 			    });
 
 
-		  });
+		  }); 
+
+            $(function() {
+				    $('#lastyear_memberships').hide(); 
+				     	
+
+				    
+				});
 
             </script>
