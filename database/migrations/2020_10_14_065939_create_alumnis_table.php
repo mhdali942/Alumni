@@ -17,28 +17,32 @@ class CreateAlumnisTable extends Migration
               $table->id();
               $table->foreignId('user_id');
             
-              $table->text('fullname');
-              $table->text('nationality');
-              $table->text('gender');
-              $table->text('refrenceNumber');
-              $table->text('faculty');
-              $table->text('edulevel');
-              $table->text('leanringmode');
-               $table->text('SalaryFirst');    
-              $table->text('MobileNumber');
-              $table->text('LandlineNumber');
-              $table->text('email');
-              $table->text('clubtasks');
+              $table->string('fullname');
+              $table->string('nationality');
+              $table->string('gender');
+              $table->string('refrenceNumber');
+              $table->string('faculty');
+              $table->string('edulevel');
+              $table->string('leanringmode');
+              $table->string('SalaryFirst');    
+              $table->string('MobileNumber');
+              $table->string('LandlineNumber');
+              $table->string('email');
+              $table->string('clubtasks');
+              $table->integer('amount')->default('0');
+              $table->tinyinteger('payment_status')->default('0');
+
              
-
-
+          
+              $table->text('paymenttype');
+           
+              $table->string('upgrade_request')->nullable();
               $table->text('Subspecialty');
               $table->text('currentaddress');
-             $table->text('Currentwork')->nullable();
+              $table->text('Currentwork')->nullable();
               $table->text('CurrentPosition')->nullable();
               $table->text('Currentworkaddress')->nullable();
-              $table->text('Previouswork')->nullable();
-              $table->text('Previouspositions')->nullable();
+             
               $table->text('Scientificliterature')->nullable();
               $table->text('Communityposts')->nullable();
               $table->text('Otherachievements')->nullable();

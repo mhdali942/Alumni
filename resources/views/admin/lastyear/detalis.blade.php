@@ -16,7 +16,7 @@
                         <thead>
                         <tr>
                          
-                           
+                 
 
                         </tr>
                         </thead>
@@ -89,15 +89,7 @@
                                 <th>{{$lastyears->Currentworkaddress}}</th>
                                   </tr>
 
-                                   <tr>
-                                <th>Previous Work / العمل السابق</th>
-                                <th>{{$lastyears->Previouswork}}</th>
-                                  </tr>
-
-                                   <tr>
-                                <th>Previous Positions / المنصب السابق</th>
-                                <th>{{$lastyears->Previouspositions}}</th>
-                                  </tr>
+                                  
 
 
                                    <tr>
@@ -151,17 +143,50 @@
                                   </tr>
 
                                     <tr>
-                                <th>Alumni Memebership Types</th>
+                                <th>General Regulation - اللوائح العامة  </th>
+                                <th>Checked</th>
+                                  </tr>
+
+                                    <tr>
+                                <th> Memebership Types - العضوية  </th>
                                 <th>{{$lastyears->Membershiptype}}</th>
                                   </tr>
 
+                                 
+
                                   <tr>
-                                <th>Terms and regulations </th>
-                                <th>Agreed</th>
+                                <th>Amount - المبلغ </th>
+                                    @if($lastyears->payment_status == 1)
+                                <th>{{ $lastyears->amount }}</th>
+                                 @else
+                                 <th>0</th>
+
+                                 @endif
                                   </tr>
 
+                                <tr> 
+                                       <th>Payment Status - حالة االدفع</th>
+                                       <th>
+                                    @if($lastyears->payment_status == 1)
+                                    <h5> <span class="badge badge-success">Paid Succssfully</span></h5>
+                                    @else
+                                     <h5> <span class="badge badge-warning">Pending</span></h5>
+                                    @endif
+                                </th>
+                              </tr>
+
+
+                                  <tr>
+                                <th>Created Date / تاريخ إنشاء الاستمارة  </th>
+                                <th>{{ $lastyears->created_at}}</th>
+                                  </tr>
+                                  <tr>
+                                <th>Last Update / آخر تعديل   </th>
+                                <th>{{$lastyears->updated_at}}</th>
+                                  </tr>
+
+
                             
-                  
     
 
                         </tbody>

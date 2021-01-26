@@ -10903,15 +10903,3 @@ a.text-dark:focus {
   }
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: #c51f1a;
-    border-color: #d2bb19;
-}
-
-
-a {
-    color: #545b62;
-    text-decoration: none;
-    background-color: transparent;
-}

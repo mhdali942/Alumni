@@ -1,11 +1,30 @@
+
+
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" >
+
+    <!-- Outer Row -->
+
     <div class="row justify-content-center">
-        <div class="col-md-8">
+
+      <div class="col-xl-8 col-lg-12 col-md-8">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+
+              <img src="{{asset('assets/img/Alumni Logo.png')}}" class="rounded mx-auto d-block" class="img-fluid" alt="Responsive image" width="50%">
+
+              
+              <div class="col-lg-12">
+
+              
+
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <div class="card-header"  style="text-align: center; font-weight: 800;">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -41,7 +60,20 @@
                     </form>
                 </div>
             </div>
+
+
+                  
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
+      </div>
+
     </div>
-</div>
+
+  </div>
 @endsection
+
+

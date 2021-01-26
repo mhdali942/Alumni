@@ -11,19 +11,20 @@
     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
        
                    @if(Auth::check() && Auth::user()->statues == "alumni")
-
+                        @if((Auth::user()->alumnis()->count() >= 1))
      <a class="dropdown-item" href="{{route('alumniForm.index')}}">
             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-           Your Alumni Form Submissions 
+              Your Form Submission 
     </a>
        
         <div class="dropdown-divider"></div>
+            @endif
         @endif
  @if(Auth::check() && Auth::user()->statues == "lastyear")
 
         <a class="dropdown-item" href="{{route('lastyear.index')}}">
             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-           Your LastYearForm Submissions 
+           Your Form Submission
     </a>
        
         <div class="dropdown-divider"></div>
@@ -33,7 +34,7 @@
 
         <a class="dropdown-item" href="{{route('honoraryForm.index')}}">
             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-           Your Cooperative Form Submissions 
+             Your Form Submission
     </a>
        
         <div class="dropdown-divider"></div>

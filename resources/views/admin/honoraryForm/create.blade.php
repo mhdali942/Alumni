@@ -3,19 +3,12 @@
     @section('content')
 
 
- <p><a href="{{url('admin')}}">Dashboard</a> / <a href="{{url('admin/alumniForms/create')}}">  Al-Madinah International University Cooperative Form / استمارة  التعاونية لنادي الخريجين في جامعة المدينة العالمية  </a> </p>
+ <p>(Exclusive for collaborators who are not university students)
+ - (خاصة  بالمتعاونين من غير طلبة الجامعة) 
+ </p>
         <hr>
 
 	
-
-								<div class="row justify-content-center mb-5 mt-4">
-								
-										<h3 style="text-align: center;">خاصة  بالمتعاونين من غير طلبة الجامعة  <strong>
-
-				      					<br>The form is for collaborators who are not university students</strong></h3><br><br>
-						
-								</div>
-									<!-- Start Alumni Form -->
 								
 								<form id="Cooperativeform" method="POST" action="{{route('honoraryForm.store')}}">
 										@csrf
@@ -27,12 +20,12 @@
 								<div class="form-row">
 
 									 <div class="form-group col-md-6">
-										      <label for="fullname">Full Name / الاسم الكامل </label>
+										      <label for="fullname">الاسم  الكامل -Full Name </label><label for="required">(* Required)</label>
 										      <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Full Name" value="{{ old('fullname') }}">
 									 </div>
 
 									<div class="form-group col-md-6">
-										      <label for="nationality">Nationality / الجنسية</label>
+										      <label for="nationality">الجنسية - Nationality  </label><label for="required">(* Required)</label>
 										      <input type="text" class="form-control" id="nationality" name="nationality" placeholder="Nationality"  value="{{ old('nationality') }}">
 									 </div>
 
@@ -44,32 +37,53 @@
 								  <div class="form-row">
 
 										    <div class="form-group col-md-6">
-										      <label for="gender">Gender/الجنس</label>
-										      <select class="form-control" id="gender" name="gender" value="{{ old('gender') }}">
+										      <label for="gender">الجنس   -  Gender </label><label for="required">(* Required)</label>
+										      <select class="form-control" id="gender" name="gender">
 
-							                            <option value="{{ old('gender') }}">{{ old('gender') }}</option>
-							                            <option value="Male">Male</option>
-							                            <option value="Female">Female</option>
+							                            <option selected="">Select</option>
+							                            <option value="Male">ذكر - Male</option>
+							                            <option value="Female">أنثى - Female</option>
 							                        </select>
 										    </div>
 
 										 
 
 										    <div class="form-group col-md-6">
-										      <label for="IcNo">Ic/Passport NO. / رقم الجواز السفر أو الهوية  </label>
-										      <input type="text" class="form-control" id="IcNo" name="IcNo" placeholder="Identification.NO"  value="{{ old('IcNo') }}">
+										      <label for="IcNo">رقم الهوية الماليزية/ رقم جواز السفر - NRIC Number/ Passport Number  </label><label for="required">(* Required)</label>
+										      <input type="text" class="form-control" id="IcNo" name="IcNo" placeholder="Identification.NO">
 										    </div>
 
 									</div>
 
 									<!-- End Row -->
 
-									<!-- Faculty  and Educational level Inputs -->
-									<div class="form-row">
-										 
 
-										 <div class="form-group col-md-6">
-										       <label for="edulevel">Educational level /المرحلة اللتي تخرجت منها </label>
+
+										  <div class="form-row">
+
+										    <div class="form-group col-md-6">
+										      <label for="MobileNumber">الهاتف المحمول- Mobile Number </label><label for="required">(* Required)</label>
+										      <input type="text" class="form-control" id="MobileNumber" name="MobileNumber" placeholder="Mobile Number"  value="{{ old('MobileNumber') }}">
+										    </div>
+
+										    <div class="form-group col-md-6">
+										       <label for="Landline Number">الهاتف الثابت- Landline Number</label><label for="required">(* Optional)</label>
+										   		 <input type="text" class="form-control" id="LandlineNumber" name="LandlineNumber" placeholder="LandlineNumber"  value="{{ old('LandlineNumber') }}">
+										    
+										    </div>
+
+										  </div>
+
+
+										    	<div class="form-row">
+
+										    <div class="form-group col-md-6">
+										      <label for="email">الايميل- E-mail Address </label><label for="required">(* Required)</label>
+										      <input type="text" class="form-control" id="email" name="email" placeholder="E-mail"  value="{{ old('email') }}">
+										    </div>
+
+										     <div class="form-group col-md-6">
+										       <label for="edulevel">آخر شهادة علمية - Last scientific certificate </label><label for="required">(* Required)</label>
 										   
 										      <select class="form-control" id="edulevel" name="edulevel"  value="{{ old('edulevel') }}">
 							                            <option value="">Select</option>
@@ -79,106 +93,93 @@
 							                              <option value="diploma">Diploma</option>
 							                        </select>
 										  </div>
-										   <div class="form-group col-md-6">
-										      <label for="currentaddress">Current Address / العنوان حالي   </label>
+
+										  </div>
+
+
+									<!-- Faculty  and Educational level Inputs -->
+								
+										 
+
+										
+										   <div class="form-group">
+										      <label for="currentaddress">العنوان الحالي - Current Address  </label><label for="required">(* Required)</label>
 										       <input type="text" class="form-control" id="currentaddress" name="currentaddress" placeholder="Current Address"  value="{{ old('currentaddress') }}">
 										   </div>
 
-									</div>
 
 								<!-- End Row -->
 
 								<!-- Current Work and Current Position Inputs -->
-									<div class="form-row">
-										 
-
-										<div class="form-group col-md-6">
-										       <label for="Currentwork">Current Work / العمل الحالي </label>
+								<div class="form-group">
+										       <label for="Currentwork">العمل الحالي - Current work </label><label for="required">(* Required)</label>
 										   		 <input type="text" class="form-control" id="Currentwork" name="Currentwork" placeholder="Current Work"  value="{{ old('Currentwork') }}">
 										    
 										    </div>
-										       <div class="form-group col-md-6">
-										       <label for="CurrentPosition">Current Position / المنصب الحالي  </label>
+
+
+									 <div class="form-group">
+										       <label for="CurrentPosition">المنصب الحالي – Current Position </label><label for="required">(* Required)</label>
 										   		 <input type="text" class="form-control" id="CurrentPosition" name="CurrentPosition" placeholder="Current Position"  value="{{ old('CurrentPosition') }}">
 										    
 										    </div>
 
-									</div>
 
 								<!-- End Row -->
 
-
-								<!-- Current work address and Previous work Inputs -->
-									<div class="form-row">
-										 
-											<div class="form-group col-md-6">
-										       <label for="Currentworkaddress">Current work address / عنوان العمل الحالي  </label>
+								<div class="form-group">
+										       <label for="Currentworkaddress">عنوان العمل الحالي - Current work address</label><label for="required">(* Optional)</label>
 										   		 <input type="text" class="form-control" id="Currentworkaddress" name="Currentworkaddress" placeholder="Current Work Address"  value="{{ old('Currentworkaddress') }}">
 										    
 										    </div>
-
-										     <div class="form-group col-md-6">
-										       <label for="Previouswork">Previous Work / العمل السابق </label>
-										   		 <input type="text" class="form-control" id="Previouswork" name="Previouswork" placeholder="Previous Work"  value="{{ old('Previouswork') }}">
+								<!-- Current work address and Previous work Inputs -->
+								
+										     <div class="form-group">
+										       <label for="Previouspositions">المناصب السابقة - Previous positions</label><label for="required">(* Optional)</label>
+										   		
+										   		 <textarea class="form-control" id="Previouspositions" name="Previouspositions" placeholder="Previous Positions"  value="{{ old('Previouspositions') }}"></textarea>
 										    
 										    </div>
-
-									</div>
 
 								<!-- End Row -->
 
 
 								<!-- Previous Positions and Scientific literature Inputs -->
-									<div class="form-row">
+									
 										 
-										     <div class="form-group col-md-6">
-										       <label for="Previouspositions">Previous Positions / المنصب السابق  </label>
-										   		 <input type="text" class="form-control" id="Previouspositions" name="Previouspositions" placeholder="Previous Positions"  value="{{ old('Previouspositions') }}">
+										     
+
+										     <div class="form-group">
+										       <label for="Scientificliterature">النتاج العلمي- Scientific output</label><label for="required">(* Optional)</label>
+										       <textarea class="form-control" id="Scientificliterature" name="Scientificliterature" placeholder="Scientific literature"  value="{{ old('Scientificliterature') }}"></textarea>
 										    
 										    </div>
 
-										     <div class="form-group col-md-6">
-										       <label for="Scientificliterature">Scientific literature / النتاج العلمي  </label>
-										   		 <input type="text" class="form-control" id="Scientificliterature" name="Scientificliterature" placeholder="Scientific literature"  value="{{ old('Scientificliterature') }}">
-										    
-										    </div>
-
-									</div>
+								
 
 								<!-- End Row -->
+
+								  <div class="form-group">
+										       <label for="Communityposts">المشاركات المجتمعية- Community posts </label><label for="required">(* Optional)</label>
+											
+											<textarea class="form-control" id="Communityposts" name="Communityposts" placeholder="Community posts"  value="{{ old('Communityposts') }}"></textarea>										    
+										    </div>
+
+
 
 
 								<!-- Community posts and Other achievements Inputs -->
-									<div class="form-row">
-										 
-										      <div class="form-group col-md-6">
-										       <label for="Communityposts">Community posts / المشاركات المجتمعية  </label>
-										   		 <input type="text" class="form-control" id="Communityposts" name="Communityposts" placeholder="Community posts"  value="{{ old('Communityposts') }}">
-										    
+								<div class="form-group">
+										       <label for="Otherachievements">إنجازات أخرى - Other achievements</label><label for="required">(* Optional)</label>
+										   		
+										    	
+										    	<textarea class="form-control" id="Otherachievements" name="Otherachievements" placeholder="Other achievements"  value="{{ old('Otherachievements') }}"></textarea>
 										    </div>
-
-										     <div class="form-group col-md-6">
-										       <label for="Otherachievements">Other achievements / اإنجازات أخرى  </label>
-										   		 <input type="text" class="form-control" id="Otherachievements" name="Otherachievements" placeholder="Other achievements"  value="{{ old('Otherachievements') }}">
-										    
-										    </div>
-
-									</div>
 
 								<!-- End Row -->
 
-									<!-- Other achievements and Monthly Salary Inputs -->
-									<div class="form-row">
-										 
-										      <div class="form-group col-md-6">
-										       <label for="Otherachievements">Other achievements / الإنجازات الأخرى  </label>
-										   		 <input type="text" class="form-control" id="SkillsAbilities" name="SkillsAbilities" 
-										   		 placeholder="Skills Abilities" value="{{ old('SkillsAbilities') }}">
-										    
-										    </div>
-
-										     <div class="form-group col-md-6">
-										       <label for="SalaryFirst">Monthly Salary  / الراتب الشهري / الدخل  </label>
+								<div class="form-group">
+										       <label for="SalaryFirst">Monthly Salary  / الراتب الشهري / الدخل  </label><label for="required">(* Required)</label>
 										   		  <select class="form-control" id="SalaryFirst" name="SalaryFirst"  value="{{ old('fullname') }}">
 							                            <option value="">Select</option>
 							                            <option value="From 1 to 1000 RM">From 1 to 1000 RM</option>
@@ -192,87 +193,24 @@
 										    
 										    </div>
 
-									</div>
 
-								<!-- End Row -->
-							
-										  	
-								<!-- Contact detalis Inputs -->
-
-								
-										  <div class="form-row">
-
-										    <div class="form-group col-md-6">
-										      <label for="MobileNumber">Mobile Number/ رقم الجوال  </label>
-										      <input type="text" class="form-control" id="MobileNumber" name="MobileNumber" placeholder="Mobile Number"  value="{{ old('MobileNumber') }}">
-										    </div>
-
-										    <div class="form-group col-md-6">
-										       <label for="Landline Number">Landline Number / الهاتف الثابت  </label>
-										   		 <input type="text" class="form-control" id="LandlineNumber" name="LandlineNumber" placeholder="LandlineNumber"  value="{{ old('LandlineNumber') }}">
-										    
-										    </div>
-
-										  </div>
-
-
-
-										  	<div class="form-row">
-
-										    <div class="form-group col-md-6">
-										      <label for="email">E-mail / البريد الإلكتروني   </label>
-										      <input type="text" class="form-control" id="email" name="email" placeholder="E-mail"  value="{{ old('email') }}">
-										    </div>
-
-										    <div class="form-group col-md-6">
-										    <label for="clubtasks">Club Tasks / مهام  يمكن القيام بها   </label>
-										   	<select class="form-control" id="clubtasks" name="clubtasks"  value="{{ old('clubtasks') }}">
-							                           		 <option value="">Select</option>
-							                           		 <option value="Club Presidency">Club Presidency </option>
-							                            	<option value="Supervisor">Supervisor</option>
-							                             	<option value="Field administrative member">Field administrative member</option>
-							                               <option value="Counselling">Counselling</option>
-							                               <option value="Managing Member">Managing Member</option>
-							                               <option value="Pay club subscription only">Pay club subscription only</option>
-							                             
-
-							                        </select>
-										    
-										    </div>
-
-										  </div>
-
-										  <div class="form-row">
-
-										    <div class="form-group col-md-6">
-										      <label for="additionaltask">Other additional task you can do  </label>
-										      <input type="text" class="form-control" id="additionaltask" name="additionaltask" 
-										      placeholder="Additional Task"  value="{{ old('additionaltask') }}"		>
-										    </div>
-
-
-										    <div class="form-group col-md-6">
-										    <label for="Memebership">Memberships   </label>
+								<div class="form-group">
+										    <label for="Memebership">Memberships   </label><label for="required">(* Required)</label>
 										   	<select class="form-control" id="Memberships" name="Memberships"  value="{{ old('Memberships') }}">
 							                          <option value="">Select</option>
-							                          <option id="Honorary" value="Honorary">Honorary Membership</option>
-							                          <option  id="Cooperative" value="Cooperative">Cooperative Membership</option>
+							                          <option id="Honorary" value="Honorary Membership">Honorary Membership</option>
+							                          <option  id="Cooperative" value="Cooperative Membership">Cooperative Membership</option>
 							                             	
 							                             
 
 							                </select>
 										    
-										    </div>
+									 </div>
+							
+										  	
+								<!-- Contact detalis Inputs -->
 
-
-										    </div>
-
-
-										  </div>
-
-
-
-										 <div class="form-group">
+								
 										    
 
 											<div class="container">
@@ -280,96 +218,87 @@
  
 									<div class="form-row mb-3 text-center">
 
-								<div class="form-group col-md-12" >
 
-									<!-- <div class="section-title">
-												          <h2>Alumni Memebership Types</h2>
-												       
-												        </div>   
+								<div class="form-group col-md-12" id="Cooperative_row" >
 
+										
+										<div class="alert alert-info" role="alert">
+																<input class="form-check-input" type="radio" name="paymenttype" id="payment" value="self payment" checked="true">
+			  													<label class="form-check-label" for="inlineRadio1"> Monthly self payment / دفع شهري ذاتي   </label>
 
-									         <div class="alert alert-success" role="alert">
-											 Note: Pay for the first month's subscription / تسديد قيمة اشتراك الشهر الأول  
-											</div>       
- -->
-
-										 <div class="card mb-4 box-shadow" id="Cooperative_row">
-									          <div class="card-header">
-									            <h4 class="my-0 font-weight-normal">Cooperative Membership / العضوية التعاونية </h4>
-
-									          </div>
-									          <div class="card-body">
-									           
-									           <small class="text-muted"></small>
-									            <h3 class="card-title pricing-card-title">Minimum 50 MYR / تبدأ من  50 رنجت ماليزي   </h3><br>
-									            <h3 class="card-title pricing-card-title">Can contribute with more than that<br>مكن أن تساهم بأكثر من ذلك  </h3><br>
-									            	  <strong>Amount / المبلغ   </strong><input type="input"  class="form-control" id="CooperativeMemAmount" name="CooperativeMemAmount"><br>
-									             <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#CooperativeModal" >Read More</button><br><br>
-
-									           		<hr/>
-									            	
-									         
-
-										           <div class="form-check form-check-inline">
-												  <input class="form-check-input" type="radio" name="Membershiptype"  value="Cooperative Membership"  value="{{ old('Membershiptype') }}">
-												  <label class="form-check-label" for="inlineRadio1">Select</label>
-												</div>
-
-									          </div>
-									        </div>
-
-								</div>
-									
+			  												</div>
 
 
-										</div>
+										 <div class="card mb-4 box-shadow" >
 
 
-										<div class="form-row mb-3 text-center">
+											     
 
-									
-									<div class="form-group col-md-12">
-										 <div class="card mb-4 box-shadow" id="Honorary_row">
+										          <div class="card-header">
+										            <h4 class="my-0 font-weight-normal">Cooperative Membership / العضوية التعاونية </h4>
 
-									          <div class="card-header" style="background-color: #c3b253;">
-									            <h4 class="my-0 font-weight-normal" style="color: white;" > Honorary Membership / العضوية الشرفية الفخرية  </h4>
-									          </div>
-									          <div class="card-body">
-									          	<h3 class="card-title pricing-card-title">Minimum 500 MYR / تبدأ من 500 رنجت ماليزي   </h3><br>
-									            <h3 class="card-title pricing-card-title">Maximum 999  MYR <br>كحد  أقصى  999رنجت ماليزي  </h3><br>
+											          </div>
+										          <div class="card-body">
 
-												             <strong>Amount / المبلغ   </strong><input type="input"  class="form-control" id="HonoraryMemAmount" name="HonoraryMemAmount" ><br>
-									         
 
-									             <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#HonoraryModal" >Read More</button><br><br>
 
-									           		<hr/>
-									           
-									           
+													          <div class="row">
 
-									           		<div class="form-check form-check-inline">
-												  <input class="form-check-input" type="radio" name="Membershiptype"  value="Honorary Membership"  value="{{ old('Membershiptype') }}"> 
-												  <label class="form-check-label" for="inlineRadio1">Select</label>
+													          		<div class="col-md-12">
+													          			
+													          			<ul class="list-group">
+																  <li class="list-group-item">تبدأ من  50 رنجت ماليزي  و يمكن أن تساهم بأكثر من ذلك     </li>
+																  <li class="list-group-item">Minimum 50 MYR and  Can contribute with more than that </li>
+																  
+																		</ul>
+													          		</div>
+									          			
+														         </div><br>
+
+										           
+										          <div class="input-group mb-4">
+																		  <div class="input-group-prepend">
+																		    <span class="input-group-text">MYR</span>
+																		  </div>
+																		  <input type="text" class="form-control" id="CooperativeMembershipAmount" class="form-control" id="CooperativeMembershipAmount" name="CooperativeMembershipAmount" placeholder="Amount / المبلغ ">
+																		  <div class="input-group-append">
+																		    <span class="input-group-text">.00</span>
+																		  </div>
+																       </div><br>
+										             <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#CooperativeModal" > Benefits(مميزات العضوية)</button><br><br>
+										             <p><strong style="color: red;">Note:</strong> Monthly Subscriptions are to be received from the 1st to the 10th of each month </p>
+													<p><strong style="color: red;">تنويه :</strong> يتم استقبال اشتراكات العضويات شهريا من تاريخ 1 إلى 10 من كل شهر </p>
+
+
+										           		<hr/>
+										            	
+										         
+
+											           <div class="form-check form-check-inline">
+													  <input class="form-check-input" type="radio" name="Membershiptype" id="Membershiptype" value="Cooperative Membership"  value="{{ old('Membershiptype') }}">
+													  <label class="form-check-label" for="inlineRadio1">Select</label>
 													</div>
-									          </div>
-									        </div>
 
-										</div>
+										          </div>
 
 
-										</div>
 
-								</div>
+														          		
+
+
+
+
+									       </div>
+
 
 									<div class="row">
 										<div class="col text-center mb-3">
 											
 											<div class="form-group">
 											 <div class="form-check">
-												  <input class="form-check-input" type="checkbox" name="Regulations" value="yes" data-toggle="modal" data-target="#RegulationsModel"  value="{{ old('Regulations') }}" ><br>
+												  <input class="form-check-input" type="checkbox" name="Regulations" value="yes" data-toggle="modal" data-target="#RegulationsModel"  value="{{ old('termsCondtions') }}" >
 												   <label class="form-check-label" for="gridCheck">
-												   	Please read the terms and regulations of the Alumni Club /يرجى قراءة اللائحة الأساسية لنادي الخريجين
-												      
+												   تنبيه :  يرجى الاطّلاع على الكتيّب التعريفي للنادي، للتعرف على النادي، ولاختيار العضوية المناسبة  <br> Note:Please read the Alumni Club Brochure, to get to know about the club, and to choose the right  											      
 													 </label>
 												 	 
 												</div>
@@ -377,6 +306,101 @@
 										</div>
 
 									</div>
+
+
+								</div>
+									
+
+
+										</div>
+
+							<div class="form-row mb-3 text-center">
+
+
+								<div class="form-group col-md-12" id="Honorary_row" >
+										<div class="alert alert-info" role="alert">
+																<input class="form-check-input" type="radio" name="paymenttype" id="payment" value="self payment" checked="true">
+			  													<label class="form-check-label" for="inlineRadio1"> Monthly self payment / دفع شهري ذاتي   </label>
+
+			  												</div>
+									
+										 <div class="card mb-4 box-shadow" >
+
+
+											     
+
+										          <div class="card-header">
+										            <h4 class="my-0 font-weight-normal">Honorary Membership / العضوية الفحرية </h4>
+
+											          </div>
+										          <div class="card-body">
+
+
+															<div class="col-md-12">
+													          			
+													          			<ul class="list-group">
+																  <li class="list-group-item">تتبدأ من 500 رنجت ماليزي   و كحد  أقصى  999رنجت ماليزي      </li>
+																  <li class="list-group-item">Minimum 500 MYR and Maximum 999  MYR </li>
+																  
+																		</ul>
+													          		</div><br>
+
+										              
+										          <div class="input-group mb-4">
+																		  <div class="input-group-prepend">
+																		    <span class="input-group-text">MYR</span>
+																		  </div>
+																		  <input type="text" class="form-control" id="HonoraryMembershipAmount" class="form-control" id="HonoraryMembershipAmount" name="HonoraryMembershipAmount" placeholder="Amount / المبلغ ">
+																		  <div class="input-group-append">
+																		    <span class="input-group-text">.00</span>
+																		  </div>
+													 </div><br>
+													 <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#HonoraryModal" >Benefits(مميزات العضوية))</button><br><br>
+													<p><strong style="color: red;">Note:</strong> Monthly Subscriptions are to be received from the 1st to the 10th of each month </p>
+													<p><strong style="color: red;">تنويه :</strong> يتم استقبال اشتراكات العضويات شهريا من تاريخ 1 إلى 10 من كل شهر </p>
+
+									           		<hr/>										            	
+										         
+
+											           <div class="form-check form-check-inline">
+													  <input class="form-check-input" type="radio" name="Membershiptype"  id="Membershiptype" value="Honorary Membership"  value="{{ old('Membershiptype') }}">
+													  <label class="form-check-label" for="inlineRadio1">Select</label>
+													</div>
+
+										          </div>
+
+
+									       </div>
+
+
+
+
+												<div class="row">
+													<div class="col text-center mb-3">
+														
+														<div class="form-group">
+														 <div class="form-check">
+															  <input class="form-check-input" type="checkbox" name="Regulations" value="yes" data-toggle="modal" data-target="#RegulationsModel"  value="{{ old('termsCondtions') }}" >
+															   <label class="form-check-label" for="gridCheck">
+															   تنبيه :  يرجى الاطّلاع على الكتيّب التعريفي للنادي، للتعرف على النادي، ولاختيار العضوية المناسبة  <br> Note:Please read the Alumni Club Brochure, to get to know about the club, and to choose the right  											      
+																 </label>
+															 	 
+															</div>
+														 </div>
+													</div>
+
+												</div>
+
+
+									</div>
+									
+
+
+								</div>
+
+
+						</div>
+
 									
 
 									<div class="row">
@@ -398,7 +422,7 @@
   <div class="modal-dialog modal-lg" role="document"> 
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="HonoraryModal"> Their benefits / ميزات العضوية </h5>
+        <h5 class="modal-title" id="HonoraryModal"> Benefits / ميزات العضوية </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -448,7 +472,7 @@
   <div class="modal-dialog modal-lg" role="document"> 
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="CooperativeModal"> Their benefits / ميزات العضوية </h5>
+        <h5 class="modal-title" id="CooperativeModal"> Benefits / ميزات العضوية </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -480,14 +504,16 @@
       	
       </p>				
 
+
       </div>
       	 					
       
+     
+    </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal" >Close</button>
         
       </div>
-    </div>
   </div>
 </div>
  
@@ -500,87 +526,28 @@
 	  <div class="modal-dialog modal-lg" role="document"> 
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="RegulationsModel">General Regulation</h5>
+	        <h5 class="modal-title" id="RegulationsModel">General Regulation- اللوائح العامة </h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
 	      </div>
-	      <div class="modal-body">
-	       <h5 style="color: #c12420; font-weight: bold; margin-left: 10px; text-decoration: underline;">Introduction</h5>
-	       <p>Certainly strengthening relationships and ties between community members has a great role in building societies and benefiting countries, specifically if those relationships are based on a solid foundation of knowledge and thought.
-	A big number of local and international students have graduated from Al-Madinah International University in Malaysia. These graduates are the pillars of work, construction and development in their countries and communities, and establishing communication links with them is considered to be very important because it involves the exchange of experiences and benefits, and support of the brother to his Muslim brother. This is a manifestation of the Islamic brotherhood grown in the university campus, and a right the graduate student owes to his university, they received knowledge and qualification for the job market. 
-	This cultural, social and developmental non-profit club will be so that it involves the university graduates from all faculties. It is under the main management of the club, and includes sub-committees and representatives in each graduate’s country, all under one net-work system. 
-	</p>
+	<div class="modal-body" >
+   
+		 <p class="card-text">
+		      <a href="{{asset('assets\Files\Initial Plan For Alumni Club.pdf')}}" target="_blank"  class="text-danger">Initial Plan For Alumni Club - English Version </a>
+		    </p><br>
+		    <p class="card-text">
+		      <a href="{{asset('assets\Files\Initial Plan For Alumni Club-arabic.pdf')}}" target="_blank"  class="text-danger" >الخطة المبدئية لنادي الخريجين  - النسخة العربية  </a>
+		    </p> 
 
-	 <h5 style="color: #c12420; font-weight: bold; margin-left: 10px; text-decoration: underline;">Vision</h5>
 
-	 <p>Strengthening the bonds of brotherhood among graduates to build countries and serve communities</p>
 
-	 <h5 style="color: #c12420; font-weight: bold;margin-left: 10px; text-decoration: underline;">Mission</h5>
-
-	 <p>Offering a group of programs and functions for the graduates and their communities, and exchanging benefits among graduates with each other</p>
-
-	 <h5 style="color: #c12420; font-weight: bold; margin-left: 10px;  text-decoration: underline;">Objectives</h5>
-
-	 <p><ul>
-	 		<li>To consolidating the affiliation of graduates with the university</li>
-	 		<li>To strengthen the  relations and ties among graduates by creating a network of communication among them</li>
-	 		<li>To benefit from the contribution, expertise and experiences of the university graduates to raise the university performance and efficiency and to execute programs and events</li>
-	 		<li>To enhance the communal partnership of graduates with their communities</li>
-	 		<li>To establish partnerships with the scientific, cultural, and social clubs, entities, institutions, and associations, locally and internationally</li>
-	 		<li>To develop the professional and scientific skills of the graduates</li>
-	 		<li>To strengthen the graduate's relationship with the university students, and enhance cooperation among them</li>
-
-	 </ul></p>
-
-	<div class="float-right" style="direction: rtl; text-align: right;" >
-		
-		<h5 style="color: #c12420; font-weight: bold; margin-left: 10px; text-decoration: underline;">مقدمة </h5>
-	       <p>لا شك أن تقوية العلاقات والروابط بين أفراد المجتمع له دور كبير في بناء المجتمعات ونفع البلدان، وبخاصة إن كانت تلك العلاقات مبنية على أساس متين راسخ من العلم والفكر.
-	وقد تخرج من جامعة المدينة العالمية في ماليزيا عدد كبير من الطلبة المحليين والدوليين، وهؤلاء الخريجون هم سواعد العمل والبناء والتطوير في بلدانهم ومجتمعاتهم، ويعتبر إنشاء حلقات التواصل معهم أمراً مهماً جداً لما فيه من تبادل الخبرات والمنافع ودعم الأخ لأخيه المسلم، بما له من حق الأخوة الإسلامية التي نشأت في رحاب الجامعة، ولما على الطالب الخريج من الحقوق تجاه جامعته التي كانت سبباً –بعد الله- في تلقيه العلم وتأهّله لسوق العمل.
-	وسيتم إنشاء هذا النادي الثقافي الاجتماعي التنموي غير الربحي ليضم خريجي الجامعة من جميع الكليات، ويتبع الإدارة الرئيسية للنادي، ويضم لجاناً فرعية وممثلين في كل بلد من بلدان الخريجين، يعملون تحت منظومة عمل واحدة.
-	 
-	</p>
-
-	 <h5 style="color: #c12420; font-weight: bold; margin-left: 10px; text-decoration: underline;">الرؤية</h5>
-
-	 <p>تقوية أواصر الأخوة بين الخريجين لبناء البلدان وخدمة المجتمعات</p>
-
-	 <h5 style="color: #c12420; font-weight: bold;margin-left: 10px; text-decoration: underline;">الرسالة</h5>
-
-	 <p>تقديم مجموعة من البرامج والفعاليات للخريجين ومجتمعاتهم وتبادل المنافع بين الخريجين</p>
-
-	 <h5 style="color: #c12420; font-weight: bold; margin-left: 10px;  text-decoration: underline;">الأهداف</h5>
-
-	 <p><ul>
-	 		<li>عزيز انتماء الخريجين للجامعة</li>
-	 		<li>وثيق العلاقات والروابط بين الخريجين بإنشاء شبكة اتصال بينهم</li>
-	 		<li>مساهمة الخريجين في رفع كفاءة الجامعة وأدائها، والاستفادة من خبراتهم وتجاربهم في تنفيذ البرامج والفعاليات</li>
-	 		<li>عزيز الشراكة المجتمعية للخريجين مع مجتمعاتهم</li>
-	 		<li>قد الشراكات مع الأندية والكيانات والمؤسسات والجمعيات العلمية والثقافية والاجتماعية داخلياً ودولياً</li>
-	 		<li>نمية المهارات العلمية والمهنية للخريجين</li>
-	 		<li>قوية علاقة الخريجين مع طلبة الجامعة، وتعزيز أوجه التعاون والشراكة فيما بينهم</li>
-
-	 </ul></p>
-
-	  <hr/>
-   <div class="alert alert-success" role="alert">
-		<p>
-			<ul>
-				<li>يحصل أعضاء النادي وإدارته على بطاقات العضوية، مع اختلاف أنواع البطاقات بحسب العضويات</li>
-				
-			</ul>
-		</p>  
-	</div> 
-	</div>
-
-	       
-
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-primary" data-dismiss="modal" >Agree</button>
-	        
-	      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" >close</button>
+        
+      </div>
+   
+	    
 	    </div>
 	  </div>
 	</div>
@@ -642,10 +609,7 @@
 			          required: true,
 			          
 			        },
-			       Regulations: {
-			          required: true,
-			          
-			        },
+			     
 			        faculty: {
 			          required: true,
 			          
@@ -671,71 +635,54 @@
 			        CurrentPosition: {
 			       
 			          minlength:5,
-			          maxlength:100
+			          maxlength:200
 			          
 			        },
 			        Currentworkaddress: {
 			        
 			          minlength:5,
-			          maxlength:200
+			          maxlength:300
 			          
 			        },
-			        Previouswork: {
 			        
-			          minlength:5,
-			          maxlength:100
-			          
-			        },
 			        Previouspositions: {
 			        
 			          minlength:5,
-			          maxlength:200
+			          maxlength:600
 			          
 			        },
 			       Scientificliterature: {
 			         
 			          minlength:5,
-			          maxlength:200
+			          maxlength:600
 			          
 			        },Communityposts: {
 			        
 			          minlength:5,
-			          maxlength:300
+			          maxlength:600
 			          
 			        },Otherachievements: {
 			          
 			          minlength:5,
-			          maxlength:300
-			          
-			        },SkillsAbilities: {
-			      
-			          minlength:5,
-			          maxlength:300
+			          maxlength:600
 			          
 			        },SalaryFirst: {
 			          required: true,
-			       
+			      
 			          
 			        },LandlineNumber: {
-			          required: true,
+			         
 			          minlength:10,
 			          maxlength:20
 			          
-			        },
-
-			        HonoraryMemAmount:{
-
-			        	
-      					max:999,
-      					min:500
-			        },
-
-			         CooperativeMemAmount:{
-
-			        	
-      					max:9999999,
-      					min:50
+			        },Regulations: {
+			         
+			         required:true,
+			         
+			          
 			        }
+
+
 			      },
 			      errorElement: "span",
 			      errorClass: "help-inline-error",
@@ -747,13 +694,15 @@
 				    $('#Cooperative_row').hide(); 
 				      $('#Honorary_row').hide(); 
 				    $('#Memberships').change(function(){
-				        if($('#Memberships').val() == 'Honorary') {
+				        if($('#Memberships').val() == 'Honorary Membership') {
 				            $('#Honorary_row').show();
 				            $('#Cooperative_row').hide();
+				            $('#CooperativeMembershipAmount').val('');
 				             
-				        } else if($('#Memberships').val() == 'Cooperative') {
+				        } else if($('#Memberships').val() == 'Cooperative Membership') {
 				            	$('#Cooperative_row').show();
 				            	$('#Honorary_row').hide();
+				            	$('#HonoraryMembershipAmount').val('');
 				             
 
 					        } 

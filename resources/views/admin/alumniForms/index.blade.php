@@ -3,8 +3,7 @@
     @section('content')
 
 
-      <p><a href="{{url('admin')}}">Dashboard</a> / <a href="{{url('admin/alumniForms')}}">Alumni Records List / قائمة الخريجين  </a></p>
-      <hr>
+
 
        
   @if(Auth::check() && Auth::user()->role == "admin")
@@ -16,21 +15,27 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
+                  
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
                             <th>#</th>
                             <th>FullName</th>
                             <th>Nationality</th>
-                            <th>Gender</th>
-                            <th>RefNO.</th>
-                            <th>Faculty</th>
+                           
+                          
+                           
                             <th>Educational level</th>
                             <th>Leanring Mode</th>
                             <th>Mobile Number</th>
                             <th>E-mail</th>
                            
-                            <th>Memebership Type</th>
+                            <th>Memebership</th>
+                            <th>Amount</th>
+                            <th>Payment Status</th>
+                            <th>Created Date</th>
+                              <th>Last Update Date</th>
+                            
                             <th></th>
                           
                               <th></th>
@@ -50,16 +55,33 @@
                                      <th>{{$loop->iteration}}</th>
                                 <th>{{$value->fullname}}</th>
                                 <th>{{$value->nationality}}</th>
-                                <th>{{$value->gender}}</th>
-                                <th>{{$value->refrenceNumber}}</th>
-                                <th>{{$value->faculty}}</th>
+                               
+                               
+                               
                                 <th>{{$value->edulevel}}</th>
                                 <th>{{$value->leanringmode}}</th>
                                 <th>{{$value->MobileNumber}}</th>
                                 <th>{{$value->email}}</th>
                                 <th>{{$value->Membershiptype}}</th>
-                               <button class="btn btn-primary"><a href="{{route('alumniForm.edit',$value->id)}}">Edit</a></button>
-                                <th><a href="{{route('alumniForm.show',$value->id)}}"><button class="btn btn-success">Review</button></a></th>
+                                @if($value->payment_status == 1)
+                                <th>MYR {{ $value->amount }}</th>
+                                 @else
+                                 <th>0</th>
+
+                                 @endif
+                                <th>
+                                  <th>{{$value->created_at}}</th>
+                                   <th>{{$value->updated_at}}</th>
+
+                                    @if($value->payment_status == 1)
+                                    <h5> <span class="badge badge-success">Paid Succssfully</span></h5>
+                                    @else
+                                     <h5> <span class="badge badge-warning">Pending</span></h5>
+                                    @endif
+                                </th>
+                                
+                               <th><a href="{{route('alumniForm.edit',$value->id)}}"><button class="btn btn-info">Edit</button></a></th>
+                                <th><a href="{{route('alumniForm.show',$value->id)}}"><button class="btn btn-success">Detalis</button></a></th>
 
 
                               
@@ -86,21 +108,30 @@
           {{$alumnis->links("pagination::bootstrap-4")}}
             </div>
         </div>
-       @elseif(Auth::check() && Auth::user()->role == "")
 
+   @elseif(Auth::check() && Auth::user()->role == "user")
 
+   @foreach($alumnis as  $value)
          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Alumni Form Detalis / تفاصيل تعبئة الاستمارة  </h6>
-            </div>
+             <div class="navbaralumni">
+                      <a href="{{url('admin')}}">Dashboard</a>
+                        <a href="{{route('alumniForm.edit',$value->id)}}">Edit Previous Submission</a>
+                         <a href="{{route('alumniForm.contact-us')}}">Contact Us</a>
+
+                       
+                       <a href="{{route('alumniForm.upgrade',$value->id)}}"> <button class="btn btn-danger">Monthly Payment</button></a>
+                           
+                      
+                      
+                    </div>
             <div class="row">
                
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                      @foreach($alumnis as  $value)
+                   
 
-                      <a href="{{route('alumniForm.edit',$value->id)}}"><div class="col-md-4" style="margin-bottom: 10px;"><button class="btn btn-primary">Edit Your form </button></a><br></th></div>
+                  <!--     <a href="{{route('alumniForm.edit',$value->id)}}"><div class="col-md-4" style="margin-bottom: 10px;"><button class="btn btn-primary">Edit Your form </button></a><br></th></div> -->
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
@@ -178,16 +209,6 @@
                                 <th>{{$value->Currentworkaddress}}</th>
                                   </tr>
 
-                                   <tr>
-                                <th>Previous Work / العمل السابق</th>
-                                <th>{{$value->Previouswork}}</th>
-                                  </tr>
-
-                                   <tr>
-                                <th>Previous Positions / المنصب السابق</th>
-                                <th>{{$value->Previouspositions}}</th>
-                                  </tr>
-
 
                                    <tr>
                                 <th>Scientific literature / النتاج العلمي</th>
@@ -235,36 +256,90 @@
                                   </tr>
 
                                   <tr>
-                                <th>Other additional task you can do</th>
+                                <th>Other additional task you can do / مهام أخرى يمكن القيام بها </th>
                                 <th>{{$value->additionaltask}}</th>
                                   </tr>
 
                                     <tr>
-                                <th>Alumni Memebership Types</th>
+                                <th>Alumni Memebership Types / نوع عضوية الخريح </th>
                                 <th>{{$value->Membershiptype}}</th>
                                   </tr>
 
                                   <tr>
-                                <th>Terms and regulations </th>
-                                <th>Agreed</th>
+                                <th>Monthly Payment / آلية الدفع الشهري  </th>
+                                <th>{{$value->paymenttype}}</th>
                                   </tr>
 
-                            
-                                        @endforeach 
+                                   <tr>
+                                    <th>Amount / المبلغ </th>
+                                    <th>
+                                     @if($value->payment_status == 1)
+                                MYR {{ $value->amount }}
+                                 @else
+                                  MYR {{ $value->amount }}
+
+                                 @endif
+                                </th>
+                                  </tr>
+
+                                  <tr> 
+                                       <th>Payment Status / حالة الدفع </th>
+                                       <th>
+                                    @if($value->payment_status == 1)
+                                    <h5> <span class="badge badge-success">Paid Succssfully</span></h5>
+                                    @else
+                                     <h5> <span class="badge badge-warning">Pending</span></h5>
+                                    @endif
+                                </th>
+                              </tr>
+
+
+                                  <tr>
+                                <th>Created Date / تاريخ إنشاء الاستمارة  </th>
+                                <th>{{$value->created_at}}</th>
+                                  </tr>
+                                  <tr>
+                                <th>Last Update / آخر تعديل   </th>
+                                <th>{{$value->updated_at}}</th>
+                                  </tr>
+                                
+                                <tr>
+                                  <th>Request upgrade- طلب  تغير عضوية </th>
+                                  <th>
+                   
+
+                   <a href="{{route('alumniForm.upgradeRequestt',$value->id)}}"> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#request-upgrade">Upgrade</button></a>
+                  
+                     </th>
+                 
+                                </tr>
+
+
+
     
 
                         </tbody>
                     </table>
+
+
+
+
+
                 </div>
+                            {{$alumnis->links("pagination::bootstrap-4")}}
+
               
             </div>
         </div>
 
+      @endforeach 
+
         
-    @endif
+   
 
     @endsection
 
+ @endif
    
     @section('scripts')
         <!-- Page level plugins -->
@@ -272,13 +347,10 @@
             <script src="{{asset('vendor/datatables/dataTables.bootstrap4.js')}}"></script>
 
             <!-- Page level custom scripts -->
-     <!--     <script src="{{asset('js/demo/datatables-demo.js')}}"></script> -->
-  @endsection
+<!--          <script src="{{asset('js/demo/datatables-demo.js')}}"></script>
+ -->  @endsection
  
         
-       
- 
-
 
 
 </x-admin-master>

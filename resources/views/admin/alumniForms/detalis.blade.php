@@ -12,14 +12,13 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                      @foreach($alumnis as  $value)
-
-                      <a href="{{route('alumniForm.edit',$value->id)}}"><div class="col-md-4"><button class="btn btn-primary">Edit</button></a><br></th></div>
+                    
+                
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
                          
-                             
+                           
 
                         </tr>
                         </thead>
@@ -33,139 +32,191 @@
 
                                    <tr>
                                 <th>Full Name / الاسم الكامل</th>
-                                <th>{{$value->fullname}}</th>
+                                <th>{{$alumnis->fullname}}</th>
                                   </tr>
 
 
                                    <tr>
                                 <th>Nationality / الجنسية</th>
-                                <th>{{$value->nationality}}</th>
+                                <th>{{$alumnis->nationality}}</th>
                                   </tr>
 
                                    <tr>
                                 <th>Gender/الجنس</th>
-                                <th>{{$value->gender}}</th>
+                                <th>{{$alumnis->gender}}</th>
                                   </tr>
 
                                    <tr>
                                 <th>Refrence NO. / الرقم المرجعي</th>
-                                <th>{{$value->refrenceNumber}}</th>
+                                <th>{{$alumnis->refrenceNumber}}</th>
                                   </tr>
 
                                    <tr>
                                 <th>Faculty/ الكلية</th>
-                                <th>{{$value->faculty}}</th>
+                                <th>{{$alumnis->faculty}}</th>
                                   </tr>
 
                                    <tr>
                                 <th>Educational level /المرحلة اللتي تخرجت منها</th>
-                                <th>{{$value->edulevel}}</th>
+                                <th>{{$alumnis->edulevel}}</th>
                                   </tr>
 
                                    <tr>
                                 <th>Leanring mode/ نمط التعليم</th>
-                                <th>{{$value->leanringmode}}</th>
+                                <th>{{$alumnis->leanringmode}}</th>
                                   </tr>
 
                                    <tr>
                                 <th>Subspecialty / التخصص الدقيق</th>
-                                <th>{{$value->Subspecialty}}</th>
+                                <th>{{$alumnis->Subspecialty}}</th>
                                   </tr>
 
                                    <tr>
                                 <th>Current Address / العنوان حالي</th>
-                                <th>{{$value->currentaddress}}</th>
+                                <th>{{$alumnis->currentaddress}}</th>
                                   </tr>
 
                                    <tr>
                                 <th>Current Work / العمل الحالي</th>
-                                <th>{{$value->Currentwork}}</th>
+                                <th>{{$alumnis->Currentwork}}</th>
                                   </tr>
 
                                    <tr>
                                 <th>Current Position / المنصب الحالي</th>
-                                <th>{{$value->CurrentPosition}}</th>
+                                <th>{{$alumnis->CurrentPosition}}</th>
                                   </tr>
 
                                    <tr>
                                 <th>Current work address / عنوان العمل الحالي</th>
-                                <th>{{$value->Currentworkaddress}}</th>
+                                <th>{{$alumnis->Currentworkaddress}}</th>
                                   </tr>
 
                                    <tr>
                                 <th>Previous Work / العمل السابق</th>
-                                <th>{{$value->Previouswork}}</th>
+                                <th>{{$alumnis->Previouswork}}</th>
                                   </tr>
 
                                    <tr>
                                 <th>Previous Positions / المنصب السابق</th>
-                                <th>{{$value->Previouspositions}}</th>
+                                <th>{{$alumnis->Previouspositions}}</th>
                                   </tr>
 
 
                                    <tr>
                                 <th>Scientific literature / النتاج العلمي</th>
-                                <th>{{$value->Scientificliterature}}</th>
+                                <th>{{$alumnis->Scientificliterature}}</th>
                                   </tr>
 
                                    <tr>
                                 <th>Community posts / المشاركات المجتمعية</th>
-                                <th>{{$value->Communityposts}}</th>
+                                <th>{{$alumnis->Communityposts}}</th>
                                   </tr>
 
                                    <tr>
                                 <th>Other achievements / اإنجازات أخرى</th>
-                                <th>{{$value->Otherachievements}}</th>
+                                <th>{{$alumnis->Otherachievements}}</th>
                                   </tr>
 
                                    <tr>
                                 <th>SkillsAbilities / إنجازات أخرى</th>
-                                <th>{{$value->SkillsAbilities}}</th>
+                                <th>{{$alumnis->SkillsAbilities}}</th>
                                   </tr>
 
                                    <tr>
                                 <th>Monthly Salary / الراتب الشهري / الدخل</th>
-                                <th>{{$value->SalaryFirst}}</th>
+                                <th>{{$alumnis->SalaryFirst}}</th>
                                   </tr>
 
                                    <tr>
                                 <th>Mobile Number/ رقم الجوال</th>
-                                <th>{{$value->MobileNumber}}</th>
+                                <th>{{$alumnis->MobileNumber}}</th>
                                   </tr>
 
                                    <tr>
                                 <th>Landline Number / الهاتف الثابت</th>
-                                <th>{{$value->LandlineNumber}}</th>
+                                <th>{{$alumnis->LandlineNumber}}</th>
                                   </tr>
 
                                    <tr>
                                 <th>E-mail / البريد الإلكتروني</th>
-                                <th>{{$value->email}}</th>
+                                <th>{{$alumnis->email}}</th>
                                   </tr>
 
                                   <tr>
                                 <th>Club Tasks / مهام يمكن القيام بها</th>
-                                <th>{{$value->clubtasks}}</th>
+                                <th>{{$alumnis->clubtasks}}</th>
                                   </tr>
 
                                   <tr>
                                 <th>Other additional task you can do</th>
-                                <th>{{$value->additionaltask}}</th>
+                                <th>{{$alumnis->additionaltask}}</th>
                                   </tr>
 
                                     <tr>
                                 <th>Alumni Memebership Types</th>
-                                <th>{{$value->Membershiptype}}</th>
+                                <th>{{$alumnis->Membershiptype}}</th>
                                   </tr>
 
                                   <tr>
                                 <th>Terms and regulations </th>
                                 <th>Agreed</th>
+
+
                                   </tr>
 
+                                  <tr>
+                                    <th>Amount</th>
+                                     @if($alumnis->payment_status == 1)
+                                <th>MYR {{ $alumnis->amount }}</th>
+                                 @else
+                                 <th>0</th>
+
+                                 @endif
+                                <th>
+                                  </tr>
+
+                                  <tr> 
+                                       <th>Payment Status</th>
+                                       <th>
+                                    @if($alumnis->payment_status == 1)
+                                    <h5> <span class="badge badge-success">Paid</span></h5>
+                                    @else
+                                     <h5> <span class="badge badge-warning">Pending</span></h5>
+                                    @endif
+                                </th>
+                              </tr>
+
+                              
+                                  <tr>
+                                <th>Created Date / تاريخ إنشاء الاستمارة  </th>
+                                <th>{{$alumnis->created_at}}</th>
+                                  </tr>
+                                  <tr>
+                                <th>Last Update / آخر تعديل   </th>
+                                <th>{{$alumnis->updated_at}}</th>
+                                  </tr>
+                                      @if($alumnis->upgrade_request=='null')
+                                  <tr>
+
+                                <th>Request upgrade- طلب  تغير عضوية  </th>
+                                
+                              
+                                  </tr>
+                                @else
+
+
+                                   <tr>
+
+                                <th>Request upgrade- طلب  تغير عضوية  </th>
+                                  @if($alumnis->upgrade_request == 'silver' || $alumnis->upgrade_request == 'golden'  || $alumnis->upgrade_request == 'platinum' )
+                                <th> <h5> <span class="badge badge-info"> Requesting upgrade to  {{$alumnis->upgrade_request}} Membership </span></h5> </th>
+                                @else
+                                 <th> <h5> <span class="badge badge-info"> No Reuqest  </span></h5> </th>
+                                 @endif
+                                  </tr>
+                                
                             
-                                        @endforeach 
-    
+                         @endif
 
                         </tbody>
                     </table>

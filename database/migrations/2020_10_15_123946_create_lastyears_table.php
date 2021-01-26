@@ -24,21 +24,22 @@ class CreateLastyearsTable extends Migration
               $table->text('faculty');
               $table->text('edulevel');
               $table->text('leanringmode');
-               $table->text('SalaryFirst');    
+              $table->text('SalaryFirst');    
               $table->text('MobileNumber');
               $table->text('LandlineNumber');
               $table->text('email');
               $table->text('clubtasks');
-             
-
+                 $table->integer('amount')->default('0');
+              $table->tinyinteger('payment_status')->default('0');
+              
+               $table->text('paymenttype');
 
               $table->text('Subspecialty');
               $table->text('currentaddress');
               $table->text('Currentwork')->nullable();
               $table->text('CurrentPosition')->nullable();
               $table->text('Currentworkaddress')->nullable();
-              $table->text('Previouswork')->nullable();
-              $table->text('Previouspositions')->nullable();
+            
               $table->text('Scientificliterature')->nullable();
               $table->text('Communityposts')->nullable();
               $table->text('Otherachievements')->nullable();

@@ -8,7 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 
-class User extends Authenticatable
+
+
+
+
+
+
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
@@ -56,5 +62,10 @@ class User extends Authenticatable
      public function honorary(){
         return $this->hasMany(honorary::class);
     }
+
+     public function payments(){
+        return $this->hasMany(payment::class);
+    }
+
     
 }

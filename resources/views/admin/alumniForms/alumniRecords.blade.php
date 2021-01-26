@@ -7,29 +7,37 @@
       <hr>
 
         <div class="card shadow mb-4">
+
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Alumni Records List / قائمة الخريجين  </h6>
             </div>
+
+  <div class="col-md-4 mt-4 ml-2">
+                                                             <a href="/AlumniDownload"> <button class="btn btn-info">Export to Excel</button></a>
+
+                           </div>
             <div class="card-body">
+
+
                 <div class="table-responsive">
+
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
                             <th>#</th>
                             <th>FullName</th>
                             <th>Nationality</th>
-                            <th>Gender</th>
-                            <th>RefNO.</th>
-                            <th>Faculty</th>
+                         
+                           
                             <th>Educational level</th>
-                            <th>Leanring Mode</th>
+                          
                             <th>Mobile Number</th>
                             <th>E-mail</th>
                            
                             <th>Memebership Type</th>
-                            <th></th>
-                           <!--  <th></th>
-                              <th></th> -->
+                            <th>Amount</th>
+                            <th>Payment Status</th>
+                         
 
 
                         </tr>
@@ -46,18 +54,33 @@
                                 <th>{{$loop->iteration}}</th>
                                 <th>{{$value->fullname}}</th>
                                 <th>{{$value->nationality}}</th>
-                                <th>{{$value->gender}}</th>
-                                <th>{{$value->refrenceNumber}}</th>
-                                <th>{{$value->faculty}}</th>
+                             
+                              
                                 <th>{{$value->edulevel}}</th>
-                                <th>{{$value->leanringmode}}</th>
+                             
                                 <th>{{$value->MobileNumber}}</th>
                                 <th>{{$value->email}}</th>
                                 <th>{{$value->Membershiptype}}</th>
+                              
+                            @if($value->payment_status == 1)
+                                <th>MYR {{ $value->amount }}</th>
+                                 @else
+                                 <th>0</th>
+
+                                 @endif
+                                <th>
+
+                                    @if($value->payment_status == 1)
+                                    <h5> <span class="badge badge-success">Paid Succssfully</span></h5>
+                                    @else
+                                     <h5> <span class="badge badge-warning">Pending</span></h5>
+                                    @endif
+                                </th>
+                            
                                 <th><a href="{{route('alumniForm.show',$value->id)}}"><button class="btn btn-success">Detalis</button></a></th>
                              @if(Auth::check() && Auth::user()->role == "admin")
 
-                                <th><a href="{{route('alumniForm.edit',$value->id)}}"><button class="btn btn-primary">Edit</button></a></th>
+                                <th><a href="{{route('alumniForm.edit',$value->id)}}"><button class="btn btn-info">Edit</button></a></th>
                                  <th><form method="post" action="{{route('alumniForm.destroy', $value->id)}}" enctype="multipart/form-data">
                                         @csrf
                                         @method('DELETE')

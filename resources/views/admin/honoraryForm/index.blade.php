@@ -2,9 +2,9 @@
 
     @section('content')
 
-<p><a href="{{url('admin')}}">Dashboard</a> / <a href="{{url('admin/alumniForms/create')}}">  Al-Madinah International University Cooperative Form / استمارة  التعاونية لنادي الخريجين في جامعة المدينة العالمية  </a> </p>
+<!-- <p><a href="{{url('admin')}}">Dashboard</a> / <a href="{{url('admin/alumniForms/create')}}">  Al-Madinah International University Cooperative Form / استمارة  التعاونية لنادي الخريجين في جامعة المدينة العالمية  </a> </p>
       <hr>
-
+ -->
   @if(Auth::check() && Auth::user()->role == "admin")
 
         <div class="card shadow mb-4">
@@ -28,9 +28,11 @@
                             <th>E-mail</th>
                            
                             <th>Memebership Type</th>
-                            <th></th>
-                           <th></th>
-                              <th></th>
+                            <th>Amount</th>
+                            <th>Payment Status</th>
+                            <th>Created Date</th>
+                            <th>Last Update Date</th>
+                            
 
 
                         </tr>
@@ -53,10 +55,31 @@
                                 <th>{{$value->MobileNumber}}</th>
                                 <th>{{$value->email}}</th>
                                 <th>{{$value->Membershiptype}}</th>
+                                <th>{{$value->created_at}}</th>
+                                <th>{{$value->updated_at}}</th>
+                                
+                                <th>
+                                     @if($value->payment_status == 1)
+                            {{ $value->amount }}
+                                 @else
+                                 0
+
+                                 @endif
+                               </th>
+                                <th>
+                                   @if($value->payment_status == 1)
+                                    <h5> <span class="badge badge-success">Paid Succssfully</span></h5>
+                                    @else
+                                     <h5> <span class="badge badge-warning">Pending</span></h5>
+                                    @endif
+                                </th>
+
+                              
+                                
                                 <th><a href="{{route('honoraryForm.edit', $value->id)}}"><button class="btn btn-primary">Edit</button></a></th>
 
-                                <th><a href="{{route('honoraryForm.show',$value->id)}}"><button class="btn btn-success">Review</button></a></th>
-                                   @if(Auth::check() && Auth::user()->role == "admin")
+                                <th><a href="{{route('honoraryForm.show',$value->id)}}"><button class="btn btn-success">Detalis</button></a></th>
+
                                  <th><form method="post" action="{{route('honoraryForm.destroy', $value->id)}}" enctype="multipart/form-data">
                                         @csrf
                                         @method('DELETE')
@@ -64,7 +87,7 @@
                                     </form></th>
                               
                                   </tr>
-                                  @endif
+                          
                              
                         
 
@@ -79,19 +102,24 @@
           {{$honoraries->links("pagination::bootstrap-4")}}
             </div>
         </div>
-            @elseif(Auth::check() && Auth::user()->role == "")
+            @elseif(Auth::check() && Auth::user()->role == "user")
+ @foreach($honoraries as  $value)
+                               <div class="navbarhonorary">
+                      <a href="{{url('admin')}}">Dashboard</a>
+                        <a href="{{route('honoraryForm.edit', $value->id)}}">Edit Previous Submission</a>
+                         <a href="{{route('honoraryForm.contact-us')}}">Contact Us</a>
 
-                  <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">honorary Form Detalis / تفاصيل تعبئة الاستمارة  </h6>
-            </div>
+                       
+                       <a href="{{route('honoraryForm.upgrade', $value->id)}}"> <button class="btn btn-danger">Monthly Payments</button></a>
+                       
+                      
+                    </div>
             <div class="card-body">
                 <div class="table-responsive">
 
-                      @foreach($honoraries as  $value)
+                     
 
-                  
-                      <a href="{{route('honoraryForm.edit', $value->id)}}"><div class="col-md-4" style="margin-bottom: 10px;"><button class="btn btn-primary">Edit Your form </button></a><br></th></div>
+                </div>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
@@ -130,6 +158,10 @@
                                 <th>{{$value->IcNo}}</th>
                                   </tr>
 
+                                    <tr>
+                                <th>E-mail / البريد الإلكتروني</th>
+                                <th>{{$value->email}}</th>
+                                  </tr>
 
                                    <tr>
                                 <th>Educational level /المرحلة اللتي تخرجت منها</th>
@@ -137,6 +169,20 @@
                                   </tr>
 
                               
+                                     <tr>
+                                <th>Monthly Salary / الراتب الشهري / الدخل</th>
+                                <th>{{$value->SalaryFirst}}</th>
+                                  </tr>
+
+                                   <tr>
+                                <th>Mobile Number/ رقم الجوال</th>
+                                <th>{{$value->MobileNumber}}</th>
+                                  </tr>
+
+                                   <tr>
+                                <th>Landline Number / الهاتف الثابت</th>
+                                <th>{{$value->LandlineNumber}}</th>
+                                  </tr>
 
                                    
 
@@ -160,10 +206,6 @@
                                 <th>{{$value->Currentworkaddress}}</th>
                                   </tr>
 
-                                   <tr>
-                                <th>Previous Work / العمل السابق</th>
-                                <th>{{$value->Previouswork}}</th>
-                                  </tr>
 
                                    <tr>
                                 <th>Previous Positions / المنصب السابق</th>
@@ -186,53 +228,69 @@
                                 <th>{{$value->Otherachievements}}</th>
                                   </tr>
 
-                                   <tr>
-                                <th>SkillsAbilities / إنجازات أخرى</th>
-                                <th>{{$value->SkillsAbilities}}</th>
-                                  </tr>
-
-                                   <tr>
-                                <th>Monthly Salary / الراتب الشهري / الدخل</th>
-                                <th>{{$value->SalaryFirst}}</th>
-                                  </tr>
-
-                                   <tr>
-                                <th>Mobile Number/ رقم الجوال</th>
-                                <th>{{$value->MobileNumber}}</th>
-                                  </tr>
-
-                                   <tr>
-                                <th>Landline Number / الهاتف الثابت</th>
-                                <th>{{$value->LandlineNumber}}</th>
-                                  </tr>
-
-                                   <tr>
-                                <th>E-mail / البريد الإلكتروني</th>
-                                <th>{{$value->email}}</th>
-                                  </tr>
-
-                                  <tr>
-                                <th>Club Tasks / مهام يمكن القيام بها</th>
-                                <th>{{$value->clubtasks}}</th>
-                                  </tr>
-
-                                  <tr>
-                                <th>Other additional task you can do</th>
-                                <th>{{$value->additionaltask}}</th>
-                                  </tr>
 
                                     <tr>
-                                <th>Alumni Memebership Types</th>
+                                <th>Cooperative Memebership Types / نوع عضوية الخريح </th>
                                 <th>{{$value->Membershiptype}}</th>
                                   </tr>
 
                                   <tr>
-                                <th>Terms and regulations </th>
-                                <th>Agreed</th>
+                                <th>Monthly Payment / آلية الدفع الشهري   </th>
+                                <th>{{$value->paymenttype}}</th>
                                   </tr>
 
+
+
+                                   <tr>
+                                    
+                                    <th>Amount / المبلغ </th>
+                                    <th>
+                                     @if($value->payment_status == 1)
+                                {{ $value->amount }}
+                                 @else
+                               MYR {{ $value->amount }}
+
+                                 @endif
+                               </th>
+                                  </tr>
+
+                                  <tr> 
+                                       <th>Payment Status / حالة الدفع </th>
+                                       <th>
+                                    @if($value->payment_status == 1)
+                                    <h5> <span class="badge badge-success">Paid Succssfully</span></h5>
+                                    @else
+                                     <h5> <span class="badge badge-warning">Pending</span></h5>
+                                    @endif
+                                </th>
+                              </tr>
+
+
+                                  <tr>
+                                <th>Created Date / تاريخ إنشاء الاستمارة  </th>
+                                <th>{{$value->created_at}}</th>
+                                  </tr>
+                                  <tr>
+                                <th>Last Update / آخر تعديل   </th>
+                                <th>{{$value->updated_at}}</th>
+                                  </tr>
+
+
+
+                                   <tr>
+                                  <th>Request upgrade- طلب  تغير عضوية </th>
+                                  <th>
+                   
+
+                   <a href="{{route('honoraryForm.upgradeRequestt',$value->id)}}"> <button type="button" class="btn btn-primary" data-toggle="modal">Upgrade</button></a>
+                  
+                     </th>
+                 
+                                </tr>
+
+
          
-         @endforeach
+                            @endforeach
                   
     
 

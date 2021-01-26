@@ -18,20 +18,22 @@ class lastyearPolicy
      */
     public function viewAny(User $user)
     {
-        
-        
+       
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\lastyear  $lastyear
+     * @param  \App\Models\alumni  $alumni
      * @return mixed
      */
-    public function view(User $user, lastyear $lastyear)
+    public function view(User $user, lastyear $lastyears)
     {
-        return $user->id === $lastyear->user_id; 
+       
+
+             return $user->id === $lastyears->user_id; 
+    
     }
 
     /**
@@ -43,55 +45,53 @@ class lastyearPolicy
     public function create(User $user)
     {
         
-        return $user->is($user);
+         return $user->is($user);
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\lastyear  $lastyear
+     * @param  \App\Models\alumni  $alumni
      * @return mixed
      */
-    public function update(User $user, lastyear $lastyear)
+    public function update(User $user,lastyear $lastyears)
     {
-       
-       return $user->id === $lastyear->user_id; 
-    
-    }
+          return $user->id === $lastyears->user_id;  
+            }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\lastyear  $lastyear
+     * @param  \App\Models\alumni  $alumni
      * @return mixed
      */
-    public function delete(User $user, lastyear $lastyear)
+    public function delete(User $user, lastyear $lastyears)
     {
-       return $user->id === $lastyear->user_id; 
+            return $user->id === $lastyears->user_id;
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\lastyear  $lastyear
+     * @param  \App\Models\alumni  $alumni
      * @return mixed
      */
-    public function restore(User $user, lastyear $lastyear)
+    public function restore(User $user, lastyear $lastyears)
     {
-       return $user->id === $lastyear->user_id;   
+        //
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\lastyear  $lastyear
+     * @param  \App\Models\alumni  $alumni
      * @return mixed
      */
-    public function forceDelete(User $user, lastyear $lastyear)
+    public function forceDelete(User $user, lastyear $lastyears)
     {
         //
     }

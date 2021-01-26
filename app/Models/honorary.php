@@ -12,13 +12,18 @@ class honorary extends Model
 
       protected $fillable = ['user_id','Regulations','fullname', 'nationality', 'gender','IcNo', 'edulevel',
 	 'currentaddress','Currentwork', 'CurrentPosition', 'Currentworkaddress','Previouswork','Previouspositions', 'Scientificliterature',
-	 'Communityposts', 'Otherachievements', 'SkillsAbilities','SalaryFirst', 
-   		 'MobileNumber', 'LandlineNumber','email', 'clubtasks','additionaltask', 'Membershiptype'];
+	 'Communityposts', 'Otherachievements','SalaryFirst', 
+   		 'MobileNumber', 'LandlineNumber','email',  'Membershiptype','amount','payment_status','paymenttype','upgrade_request'];
 
 
 
    		  public function user(){
         return $this->belongsTo(User::class);
     }
+
+     public function payments(){
+        return $this->belongsTo(payment::class);
+    }
+    
 
 }

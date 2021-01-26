@@ -18,7 +18,7 @@ class CreateHonorariesTable extends Migration
              $table->foreignId('user_id');
             
               $table->text('fullname');
-              $table->text('Regulations');
+             
               $table->text('nationality');
               $table->text('gender');
          
@@ -29,23 +29,27 @@ class CreateHonorariesTable extends Migration
               $table->text('MobileNumber');
               $table->text('LandlineNumber');
               $table->text('email');
-              $table->text('clubtasks');
+           
+              $table->integer('amount')->default('0');
+              $table->tinyinteger('payment_status')->default('0');
+             $table->string('upgrade_request')->nullable();
+
              
-
-
-              
+             
+              $table->text('Membershiptype');
+              $table->text('paymenttype');
+               
               $table->text('currentaddress');
               $table->text('Currentwork')->nullable();
               $table->text('CurrentPosition')->nullable();
               $table->text('Currentworkaddress')->nullable();
-              $table->text('Previouswork')->nullable();
+             
               $table->text('Previouspositions')->nullable();
               $table->text('Scientificliterature')->nullable();
               $table->text('Communityposts')->nullable();
               $table->text('Otherachievements')->nullable();
-              $table->text('SkillsAbilities')->nullable();
-              $table->text('additionaltask')->nullable();
-             $table->text('Membershiptype');
+           
+             $table->string('Regulations');
               
             $table->timestamps();
         });

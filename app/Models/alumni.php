@@ -10,13 +10,17 @@ class alumni extends Model
     use HasFactory;
 
 	  protected $fillable = ['user_id','termsCondtions','fullname', 'nationality', 'gender','refrenceNumber', 'faculty', 'edulevel',
-	  'leanringmode','Subspecialty','currentaddress','Currentwork', 'CurrentPosition', 'Currentworkaddress','Previouswork','Previouspositions', 'Scientificliterature','Communityposts', 'Otherachievements', 'SkillsAbilities','additionaltask','SalaryFirst', 
-   		 'MobileNumber', 'LandlineNumber','email', 'clubtasks', 'Membershiptype'];
+	  'leanringmode','Subspecialty','currentaddress','Currentwork', 'CurrentPosition', 'Currentworkaddress', 'Scientificliterature','Communityposts', 'Otherachievements', 'SkillsAbilities','additionaltask','SalaryFirst', 
+   		 'MobileNumber', 'LandlineNumber','email', 'clubtasks', 'Membershiptype','amount','payment_status','paymenttype','upgrade_request'];
 
 
 
    		  public function user(){
         return $this->belongsTo(User::class);
+    }
+
+     public function payments(){
+        return $this->belongsTo(payment::class);
     }
 
 }

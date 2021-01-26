@@ -3,18 +3,15 @@
     @section('content')
 
 
-         p><a href="{{url('admin')}}">Dashboard</a> / <a href="{{url('admin/alumniForms/create')}}">  Al-Madinah International University Cooperative Form / استمارة  التعاونية نادي الخريجين في جامعة المدينة العالمية  </a> </p>
+         <p>Cooperative Form  Detalis / تفاصيل تعبئة الاستمارة  </p>
       <hr>
 
         <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">honorary Form Detalis / تفاصيل تعبئة الاستمارة  </h6>
-            </div>
+            
             <div class="card-body">
                 <div class="table-responsive">
-                    @foreach($alumnis as  $honoraries)
-
-                      <a href="{{route('alumniForm.edit',$value->id)}}"><div class="col-md-4"><button class="btn btn-primary">Edit</button></a><br>
+             
+                  
              
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
@@ -155,6 +152,38 @@
                                   </tr>
 
          
+                                     
+                                   <tr>
+                                    <th>Amount</th>
+                                     @if($honoraries->payment_status == 1)
+                                <th>{{$honoraries->amount }}</th>
+                                 @else
+                                 <th>0</th>
+
+                                 @endif
+                                <th>
+                                  </tr>
+
+                                  <tr> 
+                                       <th>Payment Status</th>
+                                       <th>
+                                    @if($honoraries->payment_status == 1)
+                                    <h5> <span class="badge badge-success">Paid</span></h5>
+                                    @else
+                                     <h5> <span class="badge badge-warning">Pending</span></h5>
+                                    @endif
+                                </th>
+                              </tr>
+
+
+                                  <tr>
+                                <th>Created Date / تاريخ إنشاء الاستمارة  </th>
+                                <th>{{$honoraries->created_at}}</th>
+                                  </tr>
+                                  <tr>
+                                <th>Last Update / آخر تعديل   </th>
+                                <th>{{$honoraries->updated_at}}</th>
+                                  </tr>
 
                   
     

@@ -22,7 +22,8 @@
 </head>
 
 <body id="page-top">
- 
+ @include('sweetalert::alert')
+
 <!-- Page Wrapper -->
 <div id="wrapper">
  @if(Auth::check() && Auth::user()->role == "admin")
@@ -75,6 +76,8 @@
           <i class="fas fa-home"></i>
           <span>Return to website</span></a>
       </li>
+
+
 
 
         <!-- Divider -->

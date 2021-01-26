@@ -79,10 +79,10 @@
                           <select class="form-control" id="statues" name="statues" value="{{ old('statues') }}" class="form-control form-control-user" class="form-control @error('statues') is-invalid @enderror">
 
                                          
-                                           <option >Select</option>
-                                          <option value="lastyear">Last Year student</option>
-                                          <option value="alumni">Alumni </option>
-                                         <option value="cooperative">cooperative  </option>
+                                        
+                                          <option value="lastyear">Last Year students / خاصة بطالب السنة الأخيرة </option>
+                                          <option value="alumni">Alumni / الخريجين </option>
+                                         <option value="cooperative">cooperative / المتعاونين من خارج الجامعة   </option>
 
                                       </select>
 
