@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,8 +8,8 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Alumni Club | Mediu</title>
-  <meta content="Alumni Club Al-madinah International University" name="Alumni Club Al-madinah International University">
-  <meta content="Alumni Club Al-madinah International University" name="Alumni Club Al-madinah International University">
+  <meta content="Alumni Club Al-Madinah International University" name="Alumni Club Al-Madinah International University">
+  <meta content="Alumni Club Al-Madinah International University" name="Alumni Club Al-Madinah International University">
 
   <!-- Favicons -->
   <link href="{{asset('assets/img/favicon.ico.png')}}" rel="apple-touch-icon">
@@ -41,7 +42,7 @@
   <section id="topbar" class="d-none d-lg-block">
     <div class="container d-flex">
       <div class="contact-info mr-auto">
-        <i class="icofont-envelope"></i><a href="student.activities@mediu.edu.my">student.activities@mediu.edu.my</a>
+        <i class="icofont-envelope"></i><a href="alumni.club@mediu.edu.my">alumni.club@mediu.edu.my</a>
         <i class="icofont-phone"></i> Tel: +603-9055-5200
       </div>
       <div class="social-links">
@@ -84,7 +85,7 @@
                 @else
 
                 <li class="nav-item">
-                  <a class="nav-link-login" href="/login"><button class="btn btn-warning">Login here</button></a>
+                  <a class="nav-link-login" href="/login"><button class="btn btn-warning">Register/Login here</button></a>
                 </li>
 
                    
@@ -204,7 +205,7 @@
             <img src="{{asset('assets/img/Alumni Logo.png')}}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-9 pt-4 pt-lg-0 content">
-            <h3>Objactives</h3>
+            <h3>Objectives</h3>
           
 
             <ul>
@@ -243,7 +244,7 @@
               <div class="icon"><i class="icofont-graduate"></i></div>
               <h4><a href="">2880</a></h4>
               <h4> Total Alumni </h4>
-               <p>Al-madinah Interantional University <br>Your Gateway To Borderless Learning </p>
+               <p>Al-Madinah Interantional University <br>Your Gateway To Borderless Learning </p>
             </div>
           </div>
 
@@ -252,7 +253,7 @@
               <div class="icon"><i class="icofont-people"></i></div>
               <h4><a href="">96</a></h4>
                <h4>Nationality</h4>
-               <p>Al-madinah Interantional University <br>Your Gateway To Borderless Learning </p>
+               <p>Al-Madinah Interantional University <br>Your Gateway To Borderless Learning </p>
             </div>
           </div>
 
@@ -261,7 +262,7 @@
               <div class="icon"><i class="icofont-flag"></i></div>
               <h4><a href="">90</a></h4>
              <h4>Countries</h4>
-               <p>Al-madinah Interantional University <br>Your Gateway To Borderless Learning </p>
+               <p>Al-Madinah Interantional University <br>Your Gateway To Borderless Learning </p>
             </div>
           </div>
 
@@ -295,7 +296,7 @@
             <div class="info-box  mb-4">
               <i class="bx bx-envelope"></i>
               <h3>Email Us</h3>
-              <p>student.activities@mediu.edu.my</p><br>
+              <p>alumni.club@mediu.edu.my</p><br>
             </div>
           </div>
 
@@ -324,7 +325,7 @@
         <div class="row">
           <div class="col-lg-8">
            
-             <h4>Al-madinah University  Website</h4>
+             <h4>Al-Madinah University  Website</h4>
             <p>Click here to visit our</p>
            <a href="https://www.mediu.edu.my" target="_blank"><button class="btn btn-danger">MEDIU WEBSITE</button></a> 
          
@@ -339,11 +340,11 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-links">
-           <h4 style="color: #b38f00;" >Importatnt Links</h4>
+           <h4 style="color: #b38f00;" >Important Links</h4>
               <ul>
                   <li class="footer-arrow"><a href="https://qalam.mediu.edu.my/?lang=ar">(Qalam) Learning Arabic </a></li>
                   <li class="footer-arrow"><a href="https://news.mediu.edu.my">MEDIU News </a></li>
-                  <li class="footer-arrow"><a href="https://www.mediu.edu.my/mediu-libraries/">Mediu Libraries </a></li>
+                  <li class="footer-arrow"><a href="https://www.mediu.edu.my/mediu-libraries/">MEDIU Libraries </a></li>
                   <li class="footer-arrow"><a href="https://conference.mediu.edu.my/?lang=ar">Conferences</a></li>
                   <li class="footer-arrow"><a href="http://www.mediu.edu.my/training/?lang=ar">MEDIU Training Center</a></li>
                   <li class="footer-arrow"><a href="http://repository.mediu.edu.my/materials.php">Learning Materials</a></li>
@@ -353,7 +354,7 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4 style="color: #b38f00;">Protals</h4>
+            <h4 style="color: #b38f00;">Portals</h4>
            <ul>
 
               <li class="left-arrow"><a href="http://staffportal.mediu.edu.my ">Staff Portal</a></li>
@@ -390,7 +391,7 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-info">
-            <h3 style="color: #b38f00;">Stastic Visistors</h3>
+            <h3 style="color: #b38f00;">VISITOR STATISTICS</h3>
             <div class="social-links mt-3">
              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.0411645149056!2d101.69825601475718!3d3.083688697754457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc5277f25d0a93%3A0x7c281f8eb0016236!2sAl-Madinah+International+University!5e0!3m2!1sen!2smy!4v1542847853417" width="260" height="150" frameborder="3" style="border:3" allowfullscreen></iframe>
 
